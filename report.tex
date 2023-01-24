@@ -1,0 +1,94 @@
+﻿\documentclass[11pt,a4j]{jarticle}
+\usepackage[dvipdfmx]{graphicx,color}
+%\usepackage{showkeys}
+\usepackage{wrapfig}
+\usepackage{amssymb}
+\setlength{\topmargin}{-1.5cm}
+%\setlength{\textwidth}{15.5cm}
+\setlength{\textheight}{25.2cm}
+\newlength{\minitwocolumn}
+\setlength{\minitwocolumn}{0.5\textwidth}
+\addtolength{\minitwocolumn}{-\columnsep}
+%\addtolength{\baselineskip}{-0.1\baselineskip}
+%
+\def\Mmaru#1{{\ooalign{\hfil#1\/\hfil\crcr
+\raise.167ex\hbox{\mathhexbox 20D}}}}
+%
+\begin{document}
+\newcommand{\fat}[1]{\mbox{\boldmath $#1$}}
+\newcommand{\D}{\partial}
+\newcommand{\w}{\omega}
+\newcommand{\ga}{\alpha}
+\newcommand{\gb}{\beta}
+\newcommand{\gx}{\xi}
+\newcommand{\gz}{\zeta}
+\newcommand{\vhat}[1]{\hat{\fat{#1}}}
+\newcommand{\spc}{\vspace{0.7\baselineskip}}
+\newcommand{\halfspc}{\vspace{0.3\baselineskip}}
+\bibliographystyle{unsrt}
+%\pagestyle{empty}
+\newcommand{\twofig}[2]
+ {
+   \begin{figure}[h]
+     \begin{minipage}[t]{\minitwocolumn}
+         \begin{center}   #1
+         \end{center}
+     \end{minipage}
+         \hspace{\columnsep}
+     \begin{minipage}[t]{\minitwocolumn}
+         \begin{center} #2
+         \end{center}
+     \end{minipage}
+   \end{figure}
+ }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vspace*{\baselineskip}
+\begin{center}
+{\Large \bf 令和4年度 共同研究報告書}
+\end{center}
+\vspace{2mm}
+\begin{center}
+{\LARGE \bf 
+メソスケールシミュレーションによる\\緩衝材の特性評価に関する研究} 
+\end{center}
+\begin{center}
+岡山大学学術研究院 環境生命科学学域\\
+木本和志
+\end{center}
+\vspace{10mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{1_intro.tex}	
+%\input{2_cgmd.tex}
+%\input{3_results.tex}
+\section{まとめと今後の課題}
+本年度の研究では，粗視化分子動力学法(CGMD法)により，温度と化学ポテンシャルに
+加え，体積あるいは圧力を指定した粘土含水系の凝集や緩和のシミュレーションが可能
+であることを示した．化学ポテンシャルは，粘土含水系が置かれた環境の湿度に
+相当する指標と理解することができるため，これにより，体積一定の元で膨潤圧の計算を，
+圧力一定の元で膨潤量の計算を行うことが可能となった．さらに，粘土分子表面への
+水和挙動を特徴付ける水和エネルギーモデルとして，昨年度までの単調に変化する関数だけでなく，
+振動成分を加えたより複雑なモデルを用いた解析を試行した．その結果，水和エネルギーに
+振動成分を加えることで， 特定の膨潤を選択するメカニズムが働くことが明らかとなった．
+より正確には，水和エネルギーの谷の深い部分で膨潤状態は狭い範囲に集中し，
+浅い部分ではばらつきが大きくなる．また，膨潤状態は水和エネルギーの山を避けるように
+選択され，初期水分分布や指定された化学ポテンシャルによっては，複数の
+離散的な膨潤状態に分離する．
+
+今後は，水和エネルギー関数と膨潤挙動の関係をより詳細に調べ，水和エネルギーモデルを
+より現実的なものへ精緻化することが課題となる．その際，全原子分子動力学計算による
+水和挙動の評価結果を水和エネルギーモデルに反映することや，
+実験で得た膨潤曲線やX線回折パターンを再現することのできる組織構造が
+CGMD法で再現可能か検証していく必要がある．これらの取り組みを経て
+現実的な水和エネルギーモデルを見出すことができれば，層間イオンの種類や組成，
+核種移行状況に応じた膨潤や組織形成のシミュレーションを行い，
+緩衝材の設計や性能評価にも有用な知見を提供することが可能になると期待できる．
+%
+%\begin{thebibliography}{99}
+%\bibitem{Warren}
+%	B.E. Warren, "X-ray diffraction", Dover Publication, New York, 1990.
+%\bibitem{Koide}
+%	小出昭一郎,"物理現象のフーリエ解析", ちくま学芸文庫, 2018.
+%\end{thebibliography}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
