@@ -1,0 +1,52 @@
+<!doctype HTML>
+
+<html>
+<header> 
+	<title>JAEA Report 2022</title>
+
+	<meta charset="utf-8">
+        <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({TeX:{equationNumbers:{autoNumber:"AMS"}}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML,/www_func/MathJax/MyConfig.js">
+        </script>
+</header>
+<body>
+	<center>
+<h1>Figures & Comments</h1>
+	</center>
+<h2>Swelling Law</h2>
+X線回折試験によって、相対湿度と粘土層間距離の関係がこれまでに調べらている．<br>
+Na型モンモリロナイトについては，相対湿度に対する層間距離の変化が
+諸留，河村によって詳しく調べられている．<br>
+下の図はその結果を元にして作成した膨潤曲線を示している．
+横軸は相対湿度を，縦軸は層間距離を示している．<br>
+相対湿度が30%と70%付近で，層間距離が大きく変化し，全体として
+階段状のグラフとなることがNa型モンモリロナイトの特徴であることが
+知られている．<br>
+<figure>
+	<img src="FreeEnergy/xrd_swelling.png" width=400, height=350><img>
+	<figcaption>X線回折試験で得られた相対湿度と層間距離の関係</figcaption>
+</figure>
+<figure>
+	<img src="FreeEnergy/xrd_swelling.png" width=400, height=350><img>
+</figure>
+熱力学理論によれば，相対湿度と水蒸気の化学ポテンシャルが
+次の式で与えられている．
+\begin{equation}
+	\mu_w
+	=
+	\mu_w^{sat} +RT \log
+	\left\{
+		\frac{\phi(P_w)}{\phi(P^{sat}_w)}
+		r_H
+	\right\}
+	\label{eqn:mu_rH}
+\end{equation}
+ただし，\(R\)は気体定数(J/K/mol)，\(T\)は温度[K]で，\(\mu_w\)$と\(P_w\)は，それぞれ
+粒子浴(ここでは外界の水分溜)の化学ポテンシャルと蒸気圧を表し，
+satは飽和状態での量であることを意味する．また，\(\phi\)はフガシティー
+係数を表し，相対湿度\(r_H\)は0から1の値をとり，パーセント表示する場合には
+\(100 r_H\)とする．
+</body>
+</html>
