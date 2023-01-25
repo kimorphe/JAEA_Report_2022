@@ -16,6 +16,134 @@
 <h1>Figures & Comments</h1>
 	</center>
 <h2>Swelling Law</h2>
+<h3>水分浴の化学ポテンシャル</h3>
+粘土含水系が化学ポテンシャル\(\mu_{w}\)の水分浴に接しているとする．
+水分浴が気体の水である場合\(\mu_w\)は，次のように表現することができる．
+\begin{equation}
+	\mu_w
+	=
+	\mu_w^{sat} +k_BT \log
+	\left\{
+		\frac{\phi(P_w)}{\phi(P^{sat}_w)}
+		r_H
+	\right\}
+	\label{eqn:mu_rH}
+\end{equation}
+<!ただし，\(R\)(=8.314462[J/K/mol])は気体定数，\(T\)は温度[K]，\(r_H\)は >
+ただし，\(k_B(=1.380649 \times 10^{−23}\)[J/K])はボルツマン定数，
+\(T\)は温度[K]，\(r_H\)は相対湿度，\(P_w\)と\(P_w^{sat}\)はそれぞれ
+水分浴の蒸気圧と飽和蒸気圧[Pa]を表す．また，\(\phi(P)\)は蒸気圧\(P\)
+におけるフガシティー係数を表し，\(\mu_{sat}\)は\(P=P_w^{sat}\)に
+おける水分浴の化学ポテンシャルを意味する．
+ここでは簡単のためフガシティー係数を1とし，式(\ref{eqn:mu_rH})を
+\begin{equation}
+	\mu_w
+	=
+	\mu_w^{sat} +k_BT \log
+	\left(
+		r_H
+	\right)
+	\label{eqn:mu_rH_simple}
+\end{equation}
+として用いる．式(\ref{eqn:mu_rH_simple})によって，
+粘土含水系がおかれた環境の相対湿度\(r_H\)を
+化学ポテンシャル\(\mu_{w}\)に変換することができる．
+<br>
+粘土含水系の化学ポンテンシャルを\(\mu\)とする．
+水分浴と接した粘土含水系が平衡状態にあるとき，両者の
+化学ポテンシャルは一致する．すなわち
+\begin{equation}
+	\mu=\mu_{w}
+	\label{eqn:equiv_mu}
+\end{equation}
+である．粘土含水系の自由エネルギー\(G\)を
+\begin{equation}
+	G=\Psi_{LJ}+G_{hyd}
+	\label{eqn:Gtot}
+\end{equation}
+と，粒子間相互作用に関する成分\(\Psi_{LJ}\)と，層間水の水和に
+よって生じる自由エネルギー成分\(G_{hyd}\)の和として表す．
+粘土含水系の化学ポテンシャルは，系内の水分子数\(N\)で
+式(\ref{eqn:Gtot})の両辺を微分して
+\begin{equation}
+	\mu=
+	\frac{\partial G}{\partial N}
+	=
+	\frac{\partial \Psi_{LJ}}{\partial N}
+	+
+	\frac{\partial G_{hyd}}{\partial N}
+	\label{eqn:mu_sys}
+\end{equation}
+とすることで得られる．従って，平衡条件(\ref{eqn:equiv_mu})は
+次のように書くことができる．
+\begin{equation}
+	\frac{\partial \bar{\Psi}_{LJ}}{\partial N}
+	+
+	\frac{\partial G_{hyd}}{\partial N}
+	=
+	\mu_w^{sat} +k_BT \log
+	\left(
+		r_H
+	\right)
+	\label{eqn:equiv_rH}
+\end{equation}
+なお，粘土分子は平衡状態では任意の配置をとることはできない．
+このことを踏まえ，式(\ref{eqn:equiv_rH})では
+では，平衡状態での相互作用ポテンシャルである
+ことを明示的にするために\( \bar{\Psi}_{LJ}\)としてある．
+ここで，平衡状態では粘土分子間相互作用の強さが，
+層間距離に依存しないと仮定すれば，
+\begin{equation}
+	\frac{\partial \bar{\Psi}_{LJ}}{\partial N}
+	\ll
+	\frac{\partial G_{hyd}}{\partial N}
+	\label{eqn:approx}
+\end{equation}
+と考えてよいので，式(\ref{eqn:equiv_rH})において相互作用力項を無視すれば，
+\begin{equation}
+	\frac{\partial U_{hyd}}{\partial N}
+	=
+	\mu_w^{sat} +k_BT \log \left( r_H \right)
+	\label{eqn:mu_hyd}
+\end{equation}
+できる. 従って，式(\ref{eqn:mu_hyd})の両辺を水分子数\(N\)で積分する
+ことができれば，水和に関する自由エネルギー\(G_{hyd}\)が得られる．
+しかしながら，左辺が\(N\)に関する式である一方，右辺は
+相対湿度\(r_H\)を通じて\(N\)に依存する形となっている
+ため，このままでは右辺の積分を評価することができない．
+<br>
+CG-MD法では粗視化粒子間の相互作用をレナード-ジョーンズ
+ポテンシャル\(U_{LJ}\)で与えている．粗視化粒子\(i\)と
+\(j\)の位置をそれぞれ\(\boldsymbol{x}_i, \boldsymbol{x}_j\)
+とするとき，\(U_{LJ}\)は次のように表される．
+\begin{equation}
+	U(\boldsymbol{x}_i,\boldsymbol{x}_j;\sigma)=4\varepsilon \left\{
+	\left( \frac{\sigma}{r_{ij}}\right)^{12}
+	-
+	\left( \frac{\sigma}{r_{ij}}\right)^{6}
+	\right\}
+	, \ \
+	(r_{ij}=|\boldsymbol{x}_i-\boldsymbol{x}_j|)
+	\label{eqn:LJ}
+\end{equation}
+ここで，\(\varepsilon\)はポテンシャルの極小値を決めるパラメータで，
+CG-MD法では
+\begin{equation}
+\varepsilon=1.0\times 10^{-19}, \ \ ({\rm J})
+	\label{eqn:eps_num}
+\end{equation}
+としている．\(\sigma\)はポテンシャルの基準距離を与え，
+CG-MD法では層間水分量を表現するパラメータとして使用される．
+CG-MDモデルが\(M\)個の粗視化粒子からなるとき，
+相互作用に関する自由エネルギー\(\Psi_{LJ}\)は，
+\begin{equation}
+	\Psi_{LJ} = 
+     	\sum_{i < j}^M
+	U(\boldsymbol{x}_i,\boldsymbol{x}_j;\sigma)
+	\label{eqn:Psi_LJ}
+\end{equation}
+与えられる．
+<br>
 X線回折試験によって、相対湿度と粘土層間距離の関係がこれまでに調べらている．<br>
 Na型モンモリロナイトについては，相対湿度に対する層間距離の変化が
 諸留，河村によって詳しく調べられている．<br>
@@ -31,22 +159,5 @@ Na型モンモリロナイトについては，相対湿度に対する層間距
 <figure>
 	<img src="FreeEnergy/xrd_swelling.png" width=400, height=350><img>
 </figure>
-熱力学理論によれば，相対湿度と水蒸気の化学ポテンシャルが
-次の式で与えられている．
-\begin{equation}
-	\mu_w
-	=
-	\mu_w^{sat} +RT \log
-	\left\{
-		\frac{\phi(P_w)}{\phi(P^{sat}_w)}
-		r_H
-	\right\}
-	\label{eqn:mu_rH}
-\end{equation}
-ただし，\(R\)は気体定数(J/K/mol)，\(T\)は温度[K]で，\(\mu_w\)$と\(P_w\)は，それぞれ
-粒子浴(ここでは外界の水分溜)の化学ポテンシャルと蒸気圧を表し，
-satは飽和状態での量であることを意味する．また，\(\phi\)はフガシティー
-係数を表し，相対湿度\(r_H\)は0から1の値をとり，パーセント表示する場合には
-\(100 r_H\)とする．
 </body>
 </html>
