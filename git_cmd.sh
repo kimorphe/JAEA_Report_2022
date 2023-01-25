@@ -1,6 +1,8 @@
+git add Figs/*
 git add Figs/*.svgz
 git add Figs/*.py
 git add Figs/*.html
+
 
 git add *.txt
 git add *.tex
