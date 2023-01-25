@@ -121,7 +121,7 @@
 を,\(r_H=0\)から1の範囲で詳細に調べている．
 <figure>
 	<center>
-	<img src="FreeEnergy/XRD_swelling.png" width=400, height=350><img>
+	<img src="FreeEnergy/XRD_swelling.png" width=400, height=300><img>
 	<figcaption>X線回折試験で得られた相対湿度と層間距離の関係</figcaption>
 	</center>
 </figure>
@@ -145,7 +145,7 @@
 層間距離の範囲でプロットしたものである．
 <figure>
 	<center>
-	<img src="FreeEnergy/MD_swelling.png" width=400, height=400><img>
+	<img src="FreeEnergy/MD_swelling.png" width=400, height=300><img>
 	<figcaption>全原子分子動力学計算で得られた水和モル数\(n\)と層間距離\(h\)の関係</figcaption>
 	</center>
 </figure>
@@ -154,12 +154,23 @@
 	r_H=r_H(h(n))
 	\label{eqn:rh_nw}
 \end{equation}
-が得られ，これを式(\ref{eqn:mu_hyd})に代入して，
+が得られ，この関係を計算してグラフ化すると次の図にあるようになる．
+<figure>
+	<center>
+		<img src="FreeEnergy/RH_nH2O.png", width=400,height=350><img>
+		<figcaption>
+			XRD測定結果の\(h=h(r_H)\)と全原子MD計算結果の\(h=h(n)\)
+			から得られた合成関数\(r_H=r_H(n)\).
+		</figcaption>
+	</center>
+</figure>
+さらに，式(\ref{eqn:rh_nw})を式(\ref{eqn:mu_hyd})に代入し，
 \begin{equation}
 N=nN_A, \ \ (N_A=6.023\times 10^{23}:アボガドロ数)
 	\label{eqn:}
 \end{equation}
-であることを考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した次の関係が得られる．
+であることを考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した
+次の関係が得られる．
 \begin{equation}
 	\frac{\partial G_{hyd}}{\partial n}
 	=
@@ -226,15 +237,20 @@ N=nN_A, \ \ (N_A=6.023\times 10^{23}:アボガドロ数)
 	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn
 \end{equation}
 として，これらの\(n\)に対する変化を描くと，下の図に示す結果が得られる．
+<center>
 <figure>
-	<center>
-		<img src="FreeEnergy/chemical_potential.png"></img>
-		<figcaption>
-			水和モル数と化学ポテンシャルおよび水和自由エネルギーの
-			湿度依存項\(\delta \mu, \delta G_{hyd}\)の関係
-		</figcaption>
-	</center>
+	<img src="FreeEnergy/Muvar_nH2O.png", width=400, height=350></img>
+	<figcaption>
+		水和モル数と化学ポテンシャルの湿度依存項\(\delta \mu\)の関係
+	</figcaption>
 </figure>
+<figure>
+	<img src="FreeEnergy/Gvar_nH2O.png", width=400, height=350></img>
+	<figcaption>
+		水和モル数と水和自由エネルギーの湿度依存項\(\delta G_{hyd}\)の関係
+	</figcaption>
+</figure>
+</center>
 <h3>Lenard-Jones Potential (for CG-MD)</h3>
 CG-MD法では粗視化粒子間の相互作用をレナード-ジョーンズ
 ポテンシャル\(U_{LJ}\)で与えている．粗視化粒子\(i\)と
@@ -270,8 +286,14 @@ CG-MDモデルが\(M\)個の粗視化粒子からなるとき，
 <h3>CG-MDシミュレーション</h3>
 式(\ref{fig:del_G_mu})の自由エネルギーを用いて行ったCG-MDシミュレーションの結果を示す．
 はじめに，初期状態を下の図に示す．
-
-
+<figure>
+<center>
+	<img src="RH50/snap_x0.png", width=300,height=250><img>
+	<figcaption> 
+		CG-MDシミュレーションの計算モデル(初期状態).
+	</figcaption>
+</center>
+</figure>
 これは，2021年度の共同研究報告書(図***)に示したもので，粗視化粒子数3,091個，
 粘土分子数**のランダムに配置された粘土含水系から作成した周期構造モデルである．
 このモデルは次のようにして得れられたものである．
@@ -291,11 +313,11 @@ CG-MDモデルが\(M\)個の粗視化粒子からなるとき，
 応じてどのような平衡状態へ移行するかを調べる．
 以下，温度を300K, 圧力を10MPaとして，いくつかの相対湿度で平衡化計算を
 行い，どのような膨潤状態が現れるかCG-MD計算の例として示す．
-<h4>相対湿度50%の場合<h4>
+<h4>相対湿度50%の場合</h4>
 図**に、相対湿度を0.5とした場合の平衡化挙動を示す。
 この図は，平衡化計算の開始直後と中間の段階を，最終的な状態である(c)とともに示したもので，
 各経過時間における粘土分子の配置を示すスナップショットである．
-非平衡状態にある初期状態では，層間距離は概ね11\(\sim \)12[\(\AA\)]であり，
+非平衡状態にある初期状態では，層間距離は概ね11 \( \sim \)12[\( \AA \)]であり，
 無水状態である0層膨潤に近い．
 そのため，環境の相対湿度が0.5に設定されているために，速やかに吸水が起こり,
 平衡化の開始直後から層間距離の増加と,層外空隙の縮小が起きる様子が見られる.
@@ -306,8 +328,66 @@ CG-MDモデルが\(M\)個の粗視化粒子からなるとき，
 特性距離\(\sigma\)で表現されるため，これらのヒストグラムは，
 実際には\(\sigma\)のヒストグラムで，粘土配置に関しては層間距離としての意味
 を持つ，というのがより正確な言い方である．
-
-<h4>相対湿度が異なる場合の比較<h4>
+<figure>
+<center>
+	<img src="RH50/snap_x50.png", width=300,height=250><img>
+	<img src="RH50/snap_x250.png", width=300,height=250><img>
+	<figcaption> 
+		相対湿度50%での緩和挙動(組織構造のスナップショット).
+	</figcaption>
+</center>
+</figure>
+<figure>
+<center>
+	<img src="RH50/hist_x0.png", width=300,height=250><img>
+	<img src="RH50/hist_x50.png", width=300,height=250><img>
+	<img src="RH50/hist_x250.png", width=300,height=250><img>
+	<figcaption> 
+		相対湿度50%での緩和挙動(層間距離の頻度分布).
+	</figcaption>
+</center>
+</figure>
+<h4>相対湿度が異なる場合の比較</h4>
+<figure>
+<center>
+	<img src="RH10/snap_x250.png", width=300,height=250><img>
+	<img src="RH20/snap_x250.png", width=300,height=250><img>
+	<img src="RH50/snap_x250.png", width=300,height=250><img>
+	<figcaption> 
+		相対湿度を変化させたときの組織構造の変化(R.H=10,20,50%)
+	</figcaption>
+</center>
+</figure>
+<figure>
+<center>
+	<img src="RH65/snap_x250.png", width=300,height=250><img>
+	<img src="RH75/snap_x250.png", width=300,height=250><img>
+	<img src="RH90/snap_x250.png", width=300,height=250><img>
+	<figcaption> 
+		相対湿度を変化させたときの組織構造の変化(R.H=65,75,90%)
+	</figcaption>
+</center>
+</figure>
+<figure>
+<center>
+	<img src="RH10/hist_x250.png", width=300,height=250><img>
+	<img src="RH20/hist_x250.png", width=300,height=250><img>
+	<img src="RH50/hist_x250.png", width=300,height=250><img>
+	<figcaption> 
+		相対湿度を変化させたときの層間距離分布の変化(R.H=10,20,50%)
+	</figcaption>
+</center>
+</figure>
+<figure>
+<center>
+	<img src="RH65/hist_x250.png", width=300,height=250><img>
+	<img src="RH75/hist_x250.png", width=300,height=250><img>
+	<img src="RH90/hist_x250.png", width=300,height=250><img>
+	<figcaption> 
+		相対湿度を変化させたときの層間距離分布の変化(R.H=65,70,90%)
+	</figcaption>
+</center>
+</figure>
 <br>
 相対湿度が30%と70%付近で，湿度に対する層間距離の変化率が大きく，全体として
 階段状のグラフを描くことがNa型モンモリロナイトの特徴として

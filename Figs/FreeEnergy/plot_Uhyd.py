@@ -51,20 +51,20 @@ class RHN:
         ax.plot(self.nH2O,self.mu_var+self.mu_sat,styl,linewidth=lw)
         ax.grid(True)
         #ax.set_xlabel("$n(H_2O)$")
-        ax.set_ylabel("chemical potential [kJ/mol]")
+        ax.set_ylabel("$\delta \mu $[kJ/mol]")
         ax.set_ylim([-50,-44])
 
     def plot_G(self,ax,lw=2,styl="-k"):
         #ax.plot(self.nH2O,self.G_var+self.G_sat)
-        ax.plot(self.nH2O,self.G_var,styl,label="nonlinear part",linewidth=lw)
+        ax.plot(self.nH2O,self.G_var,styl,linewidth=lw)
         ax.grid(True)
         ax.set_xlabel("$n(H_2O)$")
-        ax.set_ylabel("Free energy [kJ/mol]")
+        ax.set_ylabel("$\delta G_{hyd}$[kJ/mol]")
         ax.legend()
     def plot_hz_XRD(self,ax,lw=2,styl="-k"):
         ax.plot(self.RH*100,self.hz*10,styl,linewidth=lw)
         ax.grid(True)
-        ax.set_xlabel("relative humidity[%]")
+        ax.set_xlabel("R.H.[%]")
         ax.set_ylabel("basal spacing [$\AA$]")
     def plot_hz_MD(self,ax,lw=2,styl="-k"):
         ax.plot(self.nH2O,self.hz*10,styl,linewidth=lw)
@@ -78,33 +78,45 @@ if __name__=="__main__":
 
     plt.rcParams["font.size"]=14
 
-    fig1=plt.figure(figsize=(5,6))
-    ax1=fig1.add_subplot(211)
-    ax2=fig1.add_subplot(212)
-
-    fig2=plt.figure(figsize=(5,6))
-    bx1=fig2.add_subplot(211)
-    bx2=fig2.add_subplot(212)
 
     rhn_data=RHN()
-    rhn_data.plot_hz(ax1)
-    rhn_data.plot_RH(ax2)
+
+    #  hz vs. n(H2O) 
+    #rhn_data.plot_hz(ax1)   
+    #  R.H. vs. n(H2O) 
+    fig1=plt.figure()
+    ax1=fig1.add_subplot(111)
+    rhn_data.plot_RH(ax1)
+    fig1.savefig("RH_nH2O.png",bbox_inches="tight")
+
+
+    #  mu_var vs. n(H2O) 
+    fig2=plt.figure()
+    bx1=fig2.add_subplot(111)
     rhn_data.plot_mu(bx1)
-    rhn_data.plot_G(bx2)
+    fig2.savefig("Muvar_nH2O.png",bbox_inches="tight")
 
-
+    #  G_var vs. n(H2O) 
     fig3=plt.figure()
-    ax=fig3.add_subplot(111)
+    cx1=fig3.add_subplot(111)
+    rhn_data.plot_G(cx1)
+    fig3.savefig("Gvar_nH2O.png",bbox_inches="tight")
+
+    # XRD Swelling Curve
+    fig4=plt.figure()
+    ax=fig4.add_subplot(111)
     rhn_data.plot_hz_XRD(ax,lw=3)
     ax.set_xlim([0,100])
     ax.set_ylim([9,16])
+    fig4.savefig("XRD_swelling.png",bbox_inches="tight")
 
-    fig4=plt.figure()
-    bx=fig4.add_subplot(111)
+    # XRD Swelling Curve
+    fig5=plt.figure()
+    bx=fig5.add_subplot(111)
     rhn_data.plot_hz_MD(bx,lw=3)
     bx.set_ylim([9,16])
-    #fig1.savefig("swelling.png",bbox_inches="tight")
-    #fig2.savefig("chemical_potential.png",bbox_inches="tight")
+    fig5.savefig("MD_swelling.png",bbox_inches="tight")
+
 
     plt.show()
 

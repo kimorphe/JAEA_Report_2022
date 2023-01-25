@@ -146,8 +146,8 @@ if __name__=="__main__":
     k=0;
 
 
-    xrng=[11,16]
-    bins=100
+    xrng=[10,16]
+    bins=120
     for num in fnums:
         fname="x"+str(num)+".dat"
         ptc=PTCS(fname);

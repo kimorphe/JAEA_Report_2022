@@ -1,0 +1,7 @@
+<figure>
+<center>
+	<img src="", width=300,height=250><img>
+	<figcaption> 
+	</figcaption>
+</center>
+</figure>
