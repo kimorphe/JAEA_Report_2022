@@ -16,7 +16,7 @@
 <h1>Figures & Comments</h1>
 	</center>
 <h2>Swelling Law</h2>
-<h3>水分浴の化学ポテンシャル</h3>
+<h3>相対湿度と化学ポテンシャル</h3>
 粘土含水系が化学ポテンシャル\(\mu_{w}\)の水分浴に接しているとする．
 水分浴が気体の水である場合\(\mu_w\)は，次のように表現することができる．
 \begin{equation}
@@ -101,7 +101,7 @@
 \end{equation}
 と考えてよいので，式(\ref{eqn:equiv_rH})において相互作用力項を無視すれば，
 \begin{equation}
-	\frac{\partial U_{hyd}}{\partial N}
+	\frac{\partial G_{hyd}}{\partial N}
 	=
 	\mu_w^{sat} +k_BT \log \left( r_H \right)
 	\label{eqn:mu_hyd}
@@ -110,8 +110,133 @@
 ことができれば，水和に関する自由エネルギー\(G_{hyd}\)が得られる．
 しかしながら，左辺が\(N\)に関する式である一方，右辺は
 相対湿度\(r_H\)を通じて\(N\)に依存する形となっている
-ため，このままでは右辺の積分を評価することができない．
-<br>
+ため，\(r_H\)と\(N\)の関係を与える必要がある．
+<h3>相対湿度と水分子数の関係</h3>
+粘土の粉末X線回折試験(X-Ray Diffraction)を行えば，回折ピークから粘土層間の距離
+\(h\)が求まる．諸留，河村(2009)は，相対湿度と温度を制御した環境下で
+その場X線回折試験を行い，温度一定条件での相対湿度と層間距離の関係
+\begin{equation}
+	h=h(r_H), \ \ (0 \leq r_H \leq 1)
+	\label{eqn:hz_rh}
+\end{equation}
+を,\(r_H=0\)から1の範囲で詳細に調べている．
+<figure>
+	<center>
+	<img src="FreeEnergy/XRD_swelling.png" width=400, height=350><img>
+	<figcaption>X線回折試験で得られた相対湿度と層間距離の関係</figcaption>
+	</center>
+</figure>
+上の図はその結果の一部である，Na型モンモリロナイトに対する
+温度50\(^\circ\)Cでの結果を文献から復元したもので，
+横軸は相対湿度，縦軸は層間距離を示している．
+これを式(\ref{eqn:hz_rh})として用いれば，環境の相対湿度と
+粘土含水系の層間距離を結びつけることができる．
+従って，層間距離\(h\)と粘土層間の水分子数\(N\)の関係が
+得られば，二つの関係式を使って\(r_H\)と\(N\)の関係が
+得られ，式(\ref{eqn:mu_hyd})の両辺を\(N\)あるいは\(r_H\)に
+変数を統一して書くことができる．
+この目的のために，全原子分子動力学法で計算を行った，粘土層間距離と
+水和モル数\(n\)の関係:
+\begin{equation}
+	h=h(n)
+	\label{eqn:hz_nw}
+\end{equation}
+を用いる．下図は，全原子MD計算から得られた式(\ref{eqn:hz_nw})の
+関係で，実験で観測された，相対湿度0から1の間で取り得る
+層間距離の範囲でプロットしたものである．
+<figure>
+	<center>
+	<img src="FreeEnergy/MD_swelling.png" width=400, height=400><img>
+	<figcaption>全原子分子動力学計算で得られた水和モル数\(n\)と層間距離\(h\)の関係</figcaption>
+	</center>
+</figure>
+式(\ref{eqn:hz_nw})と式(\ref{eqn:hz_rh})の逆関数\(r_H=r_H(h)\)を合成すれば，
+\begin{equation}
+	r_H=r_H(h(n))
+	\label{eqn:rh_nw}
+\end{equation}
+が得られ，これを式(\ref{eqn:mu_hyd})に代入して，
+\begin{equation}
+N=nN_A, \ \ (N_A=6.023\times 10^{23}:アボガドロ数)
+	\label{eqn:}
+\end{equation}
+であることを考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した次の関係が得られる．
+\begin{equation}
+	\frac{\partial G_{hyd}}{\partial n}
+	=
+	\mu_w^{sat}N_A +k_BN_AT \log \left\{ r_H(n) \right\}
+	\label{eqn:mu_hyd_n0}
+\end{equation}
+ここで，\(\mu_{sat}N_A\)は化学ポテンシャルを1molあたりの
+量として表したもので，\(k_B N_A\)は気体定数\(R\)である．
+そこで，化学ポテンシャルを[J/mol]の単位で与えるものとして，\(N_A\)を
+省略すれば，式\ref{eqn:mu_hyd_n0}は
+\begin{equation}
+	\frac{\partial G_{hyd}}{\partial n}
+	=
+	\mu_w^{sat} +RT \log \left( r_H(n) \right)
+	\label{eqn:mu_hyd_n}
+\end{equation}
+と表すことができる．これを定温条件で,湿度1を基準として積分すれば,
+自由エネルギーの変化
+\begin{equation}
+	\Delta G_{hyd} = G_{hyd}(n)-G_{hyd}(n_{sat})	
+	\label{eqn:del_G}
+\end{equation}
+が
+\begin{equation}
+	\Delta G_{hyd}
+	=
+	\mu_{sat}\Delta n
+	+
+	RT
+	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn, \ \ (0 \leq n \leq n_{sat})
+	\label{eqn:del_G_mu}
+\end{equation}
+で計算できる.
+ただし,\(n_{sat}\)は相対湿度\(r_H=1\)のときに、粉末状の粘土がとる
+層間水量で,\(\Delta n\)はその増分
+\begin{equation}
+	\Delta n = n-n_{sat}
+\end{equation}
+を意味する. また，粘土含水系の化学ポテンシャルは
+\begin{equation}
+	\mu
+	=
+	\frac{\partial G}{\partial n}
+	\simeq
+	\frac{\partial G_{hyd}}{\partial n}
+	=
+	\mu_w^{sat} +RT \log \left\{ r_H(n) \right\}
+	\label{eqn:mu_system}
+\end{equation}
+式(\ref{eqn:mu_system})より，層間水量による化学ポテンシャルの変化は
+右辺第二項で与えられ，この項が粘土の膨潤特性を表現している．
+また，対応する自由エネルギー変化の成分は，
+式(\ref{eqn:del_G_mu})の右辺第二項の積分で与えられる非線形項で，
+右辺第1項の\(n\)に関する線形項は，粘土の膨潤特性とは関係しない．
+そこで，
+\begin{equation}
+	\delta \mu = \mu-\mu_{w}^{sat}
+	=
+	RT \log \left\{ r_H(n)\right\} dn
+\end{equation}
+\begin{equation}
+	\delta G_{hyd} = 
+	RT
+	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn
+\end{equation}
+として，これらの\(n\)に対する変化を描くと，下の図に示す結果が得られる．
+<figure>
+	<center>
+		<img src="FreeEnergy/chemical_potential.png"></img>
+		<figcaption>
+			水和モル数と化学ポテンシャルおよび水和自由エネルギーの
+			湿度依存項\(\delta \mu, \delta G_{hyd}\)の関係
+		</figcaption>
+	</center>
+</figure>
+<h3>Lenard-Jones Potential (for CG-MD)</h3>
 CG-MD法では粗視化粒子間の相互作用をレナード-ジョーンズ
 ポテンシャル\(U_{LJ}\)で与えている．粗視化粒子\(i\)と
 \(j\)の位置をそれぞれ\(\boldsymbol{x}_i, \boldsymbol{x}_j\)
@@ -152,12 +277,5 @@ Na型モンモリロナイトについては，相対湿度に対する層間距
 相対湿度が30%と70%付近で，層間距離が大きく変化し，全体として
 階段状のグラフとなることがNa型モンモリロナイトの特徴であることが
 知られている．<br>
-<figure>
-	<img src="FreeEnergy/xrd_swelling.png" width=400, height=350><img>
-	<figcaption>X線回折試験で得られた相対湿度と層間距離の関係</figcaption>
-</figure>
-<figure>
-	<img src="FreeEnergy/xrd_swelling.png" width=400, height=350><img>
-</figure>
 </body>
 </html>
