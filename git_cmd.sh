@@ -2,9 +2,8 @@ git add Figs/*
 git add Figs/*.svgz
 git add Figs/*.py
 git add Figs/*.html
-git add Figs/*.odt
 
-
+git add *.odt
 git add *.txt
 git add *.tex
 git add makefile
