@@ -9,6 +9,7 @@ git add *.tex
 git add makefile
 git add git_cmd.sh
 git add *.pdf
+git add *.html
 
 git commit
 

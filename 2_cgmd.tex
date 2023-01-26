@@ -1,4 +1,31 @@
 ﻿\section{粗視化分子動力学法(CGMD法)の概要}
+%--------------------
+\begin{figure}[h]
+	\begin{center}
+	\includegraphics[width=1.0\linewidth]{Figs/fig1.pdf} 
+	\end{center}
+	\caption{
+		Na型モンモリロナイトの膨潤挙動.
+		(a) X線回折試験で得られた相対湿度と層間距離の関係(諸留，河村2009\cite{Morodome}
+		から再現).(b) 全原子MD計算で得れられた水和モル数と層間距離の関係
+		(森本ら2023\cite{Morimoto}). 
+	} 
+	\label{fig:fig1}
+\end{figure}
+%--------------------
+\begin{figure}[h]
+	\begin{center}
+	\includegraphics[width=1.0\linewidth]{Figs/fig2.pdf} 
+	\end{center}
+	\caption{
+		Na型モンモリロナイトの膨潤データから作成した
+		水和エネルギーモデルと水和モル数の関係.
+		(a)化学ポテンシャル$\mu(n)$, (b)水和エネルギーの非線形成分$\delta G_{hyd}(n)$.
+	} 
+	\label{fig:fig2}
+\end{figure}
+%--------------------
+%--------------------
 \subsection{粒子間相互作用力}
 CGMD法では，粗視化粒子に作用する力として分子内力と分子間力の2つを与える．
 分子内力は，粗視化粒子を結合して一つの分子として振る舞うように剛性を与える
@@ -300,7 +327,7 @@ $\Delta u(s)=u_\infty\alpha \tilde V(s)$とする．
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=1.0\linewidth]{Figs/fig1.eps} 
+%	\includegraphics[width=1.0\linewidth]{Figs/fig1.eps} 
 	\end{center}
 	\caption{
 		単調減少する水和エネルギーのモデル(単調モデル).
@@ -312,7 +339,7 @@ $\Delta u(s)=u_\infty\alpha \tilde V(s)$とする．
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=1.0\linewidth]{Figs/fig2.eps} 
+%	\includegraphics[width=1.0\linewidth]{Figs/fig2.eps} 
 	\end{center}
 	\caption{
 		水和エネルギーモデルとその成分(内訳)．
