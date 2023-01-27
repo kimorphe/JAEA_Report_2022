@@ -4,6 +4,7 @@ git add Figs/*.py
 git add Figs/*.html
 
 git add *.odt
+git add *.docx
 git add *.txt
 git add *.tex
 git add makefile

@@ -26,6 +26,29 @@
 ここで(c)と(d)の図を見ると粘土分子の配置にはほとんど差がない．
 これは，冷却によって粗視化粒子の振動は抑えられるが，密度が高く粒子位置は
 ほとんど変化を起こすことができないためである．
+\subsection{追加したテキスト}
+図2
+湿度を指定して行った，Na型モンモリロナイトの膨潤シミュレーション．(a)は粘土含水系モデルの初期状態を,(b)は相対湿度50$\%$, 
+(c)は 相対湿度75$\%$において緩和計算を行い最終的に得られた組織構造（粘土分子配置）のスナップショットを示す．
+
+(a)に示した初期状態は2021年度共同研究で得られた，仮想的な粘土の組織構造モデルである．
+このモデルでは系全体が一層膨潤に達するには不十分な水分量しかもたない，乾燥状態に近いモデルになっている．
+これを始状態とし，相対湿度をそれぞれ50$\%$および75$\%$に設定し，温度を300で一定として組織構造の緩和（平衡化）
+計算を行った結果が(b)と(c)である．いずれもの場合も吸水が起こり，粘土層間距離が拡がっている．
+その結果，粘土分子の積層体は顕著に体積が増す一方，粘土層外の間隙が積層体の体積増加を吸収するためにモデル全体の膨潤量は小さい．
+湿度75$\%$のケースでは50$\%$に比較して吸水量が大きく，積層体の体積膨張もより大きいため，層外の間隙がほとんど消失していることが分かる．
+
+図3
+湿度を指定して行ったNa型モンモリロナイトの膨潤シミュレーションの結果．
+(a)は初期状態,(b)は相対湿度50$\%$, (c)は 相対湿度75$\%$における粘土層間距離の頻度分布を示す．
+
+初期状態(a)では層間距離が11〜12Åの範囲にあり0層から1層膨潤状態への中間にある．
+この状態から相対湿度を50$\%$にして緩和計算を行った結果である(b)では，層間距離は12.5Å近傍に集中し，
+ほぼ1膨潤状態のみとなっている．さらに相対湿度をあげた75$\%$では，13.2$\AA$と15.5$\AA$付近に2つのピークを持つ頻度分布となっている．
+頻度分布の前者のピークは，1層から2層膨潤へ移行する直前の，後者のピークは2層膨潤状態の層間距離に相当し，
+このケースでは1層と2層膨潤状態が混在することを示している．
+いずれの相対湿度も，図1-(a)に示したXRD試験で観測される層間距離と近い値であることがわかる．
+このことからも，本研究で用いた水和エネルギーモデルには，観測で得られたNa型モンモリロナイトの膨潤特性が反映されていることが確かめられる．
 \subsection{化学ポテンシャル一定での平衡化}
 %	図4 :化学ポテンシャル一定での平衡化 図4
 次に，図\ref{fig:fig3}(d)を新たな初期状態として，体積，温度，
@@ -171,7 +194,7 @@ $N_p=$3,194個だから，図\ref{fig:fig6}は$N_p\times$2=6,388の
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=0.9\linewidth]{Figs/fig3.eps} 
+%	\includegraphics[width=0.9\linewidth]{Figs/fig3.eps} 
 	\end{center}
 	\caption{
 		初期モデルの作成．(a)ランダムに配置された粘土分子．(b),(c) 断熱圧縮後の状態，(d)
@@ -182,7 +205,7 @@ $N_p=$3,194個だから，図\ref{fig:fig6}は$N_p\times$2=6,388の
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=0.9\linewidth]{Figs/fig4.eps} 
+%	\includegraphics[width=0.9\linewidth]{Figs/fig4.eps} 
 	\end{center}
 	\caption{
 		温度(300K)，体積，化学ポテンシャル一定での緩和．
@@ -194,7 +217,7 @@ $N_p=$3,194個だから，図\ref{fig:fig6}は$N_p\times$2=6,388の
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=0.7\linewidth]{Figs/fig5.eps} 
+%	\includegraphics[width=0.7\linewidth]{Figs/fig5.eps} 
 	\end{center}
 	\caption{
 		緩和過程におけるエネルギーの推移($\bar{\mu}=0.3の場合$).
@@ -204,7 +227,7 @@ $N_p=$3,194個だから，図\ref{fig:fig6}は$N_p\times$2=6,388の
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=0.9\linewidth]{Figs/fig6.eps} 
+%	\includegraphics[width=0.9\linewidth]{Figs/fig6.eps} 
 	\end{center}
 	\caption{
 		水和層厚さの頻度分布．(a)は緩和開始時，(b),(c),(d)は
@@ -215,7 +238,7 @@ $N_p=$3,194個だから，図\ref{fig:fig6}は$N_p\times$2=6,388の
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=1.0\linewidth]{Figs/fig7.eps} 
+%	\includegraphics[width=1.0\linewidth]{Figs/fig7.eps} 
 	\end{center}
 	\caption{
 		化学ポテンシャル一定条件での緩和による粘土分子配置と水和層厚分布の変化．
@@ -227,7 +250,7 @@ $N_p=$3,194個だから，図\ref{fig:fig6}は$N_p\times$2=6,388の
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=0.9\linewidth]{Figs/fig8.eps} 
+%	\includegraphics[width=0.9\linewidth]{Figs/fig8.eps} 
 	\end{center}
 	\caption{
 		温度(300K)，圧力(50MPa)，化学ポテンシャル一定での緩和．
@@ -240,7 +263,7 @@ $N_p=$3,194個だから，図\ref{fig:fig6}は$N_p\times$2=6,388の
 %--------------------
 \begin{figure}[h]
 	\begin{center}
-	\includegraphics[width=0.9\linewidth]{Figs/fig9.eps} 
+%	\includegraphics[width=0.9\linewidth]{Figs/fig9.eps} 
 	\end{center}
 	\caption{
 		水和層厚さの頻度分布．(a)は緩和開始時，(b),(c),(d)は
