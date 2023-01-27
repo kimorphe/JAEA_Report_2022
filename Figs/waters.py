@@ -145,7 +145,6 @@ if __name__=="__main__":
     ax=fig.add_subplot(111)
     k=0;
 
-
     xrng=[10,16]
     bins=120
     for num in fnums:

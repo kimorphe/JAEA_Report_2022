@@ -146,7 +146,6 @@ if __name__=="__main__":
 	#fnum=np.linspace(0,100,101);
 	fnum=np.arange(nfile1,nfile2+1,inc);
 	fnum=fnum.astype(int)
-
 	fnum=[0,50,100,150,200,250]
 
 	if MV:
