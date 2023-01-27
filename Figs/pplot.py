@@ -161,8 +161,8 @@ if __name__=="__main__":
 		#ax.set_ylim([0,200]);
 		ax.set_xlim([0,75]);
 		ax.set_ylim([0,75]);
-		ax.set_xlabel("x [nm]",fontsize="12")
-		ax.set_ylabel("y [nm]",fontsize="12")
+		#ax.set_xlabel("x [nm]",fontsize="12")
+		#ax.set_ylabel("y [nm]",fontsize="12")
 		#title=ax.text(200,0,fname+", t="+str(ptc.time)+"[ps]",ha="right")
 		title=ax.text(70,72.,fname+", t="+str(ptc.time)+"[ps]",ha="right")
 		plts.append(title);

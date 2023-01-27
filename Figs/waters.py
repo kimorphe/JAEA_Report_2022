@@ -157,8 +157,8 @@ if __name__=="__main__":
         fnout="hist_"+fnout
         print(fnout)
         ax.set_xlim(xrng)
-        ax.set_xlabel("basal spacing [$\AA$]")
-        ax.set_ylabel("count")
+        #ax.set_xlabel("basal spacing [$\AA$]")
+        #ax.set_ylabel("count")
         fig.savefig(fnout,bbox_inches="tight")
         ax.clear()
 
