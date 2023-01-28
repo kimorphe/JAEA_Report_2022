@@ -1,4 +1,69 @@
-﻿\section{粗視化分子動力学法(CGMD法)の概要}
+﻿\section{Na型モンモリロナイトの水和エネルギーモデル}
+\subsection{水蒸気の化学ポテンシャル}
+粘土含水系が温度$T$，相対湿度$r_H$の水蒸気に接しているとする．
+水蒸気は粘土含水系に対して水分浴の役割を果たし，その化学ポテンシャルを$\mu_w$と
+すれば，$\mu_w$と$r_H$の関係は次のように表される．
+\begin{equation}
+	\mu_w
+	=
+	\mu_w^{sat} +k_BT \log
+	\left\{
+		\frac{\phi(P_w)}{\phi(P^{sat}_w)}
+		r_H
+	\right\}
+	\label{eqn:mu_rH}
+\end{equation}
+ただし，$k_B(=1.380649\times 10^{−23}$[J/K]はボルツマン定数，$P_w$と$P^{sat}_w$はそれぞれ 
+水分浴の蒸気圧と飽和蒸気圧[Pa]を表す．また，$\phi(P)$は蒸気圧$P$におけるフガシティー係数を表し，
+$\mu_w^{sat}$は$P=P^{sat}_w$における水分浴の化学ポテンシャルを意味する．
+ここでは，簡単のためフガシティー係数を1にとり，式(\ref{eqn:mu_rH})を
+\begin{equation}
+	\mu_w
+	=
+	\mu_w^{sat} +k_BT \log
+	\left(
+		r_H
+	\right)
+	\label{eqn:mu_rH_simple}
+\end{equation}
+として用いる．いま，水分浴kに接して平衡状態にある粘土含水系の化学ポンテンシャルを$\mu$とすれば，
+両者の 化学ポテンシャルは一致する．すなわち
+\begin{equation}
+	\mu=\mu_{w}
+	\label{eqn:equiv_mu}
+\end{equation}
+が成り立つ．
+\subsection{粘土含水系の自由エネルギー}
+粘土含水系の自由エネルギーを$G$とすれば，系内の水分に関する化学ポテンシャルである$\mu$は，
+水分子数$N$の微分
+\begin{equation}
+	\mu=\frac{\partial G}{\partial N}
+	\label{eqn:mu_GN}
+\end{equation}
+で与えられる．ここで，CG-MD法における自由エネルギーを次のように定義する．
+\begin{equation}
+	G=\Psi_{LJ}+G_{hyd}
+	\label{eqn:Gtot}
+\end{equation}
+ここで，$\Psi_{LJ}$は粗視化粒子間相互作用に関するポテンシャルエネルギーを，$G_{hyd}$は層間水の水和に
+関する自由エネルギーを表す．
+$\Psi_{LJ}$はCG-MD法において既に定義されているものであるため，
+自由エネルギー$G$を定義することは，水和に関する自由エネルギー$G_{hyd}$をあらたに定義することを意味する．
+ここでは，平衡状態において式(\ref{eqn:equiv_mu})が満足されるよう
+\begin{equation}
+	\frac{\partial G}{\partial N}
+	=
+	\frac{\partial \bar{\Psi}_{LJ}}{\partial N}
+	+
+	\frac{\partial G_{hyd}}{\partial N}
+	=
+	\mu_w^{sat} +k_BT \log
+	\left(
+		r_H
+	\right)
+	\label{eqn:equiv_rH}
+\end{equation}
+の条件から$G_{hyd}$を定める．以下，$G_{hyd}$を水和エネルギーと呼ぶ．
 %--------------------
 \begin{figure}[h]
 	\begin{center}
