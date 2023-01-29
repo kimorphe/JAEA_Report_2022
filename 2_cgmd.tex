@@ -42,18 +42,19 @@ $\mu_w^{sat}$は$P=P^{sat}_w$における水分浴の化学ポテンシャルを
 \end{equation}
 で与えられる．ここで，CG-MD法における自由エネルギーを次のように定義する．
 \begin{equation}
-	G=\Psi_{LJ}+G_{hyd}
+	G=\left< \Psi_{LJ} \right> +G_{hyd}
 	\label{eqn:Gtot}
 \end{equation}
-ここで，$\Psi_{LJ}$は粗視化粒子間相互作用に関するポテンシャルエネルギーを，$G_{hyd}$は層間水の水和に
-関する自由エネルギーを表す．
-$\Psi_{LJ}$はCG-MD法において既に定義されているものであるため，
-自由エネルギー$G$を定義することは，水和に関する自由エネルギー$G_{hyd}$をあらたに定義することを意味する．
+ここで，$\Psi_{LJ}$は粗視化粒子間相互作用に関するポテンシャルエネルギーを，$
+G_{hyd}$は層間水の水和に関する自由エネルギーを表す．
+$\Psi_{LJ}$はCG-MD法において既に与えられているものだから，
+自由エネルギー$G$を定義することと，水和に関する自由エネルギー
+$G_{hyd}$を定義することは同義である．
 ここでは，平衡状態において式(\ref{eqn:equiv_mu})が満足されるよう
 \begin{equation}
 	\frac{\partial G}{\partial N}
 	=
-	\frac{\partial \bar{\Psi}_{LJ}}{\partial N}
+	\frac{\partial \left< \Psi_{LJ}\right>}{\partial N}
 	+
 	\frac{\partial G_{hyd}}{\partial N}
 	=
@@ -63,7 +64,112 @@ $\Psi_{LJ}$はCG-MD法において既に定義されているものであるた�
 	\right)
 	\label{eqn:equiv_rH}
 \end{equation}
-の条件から$G_{hyd}$を定める．以下，$G_{hyd}$を水和エネルギーと呼ぶ．
+から$G_{hyd}$を定める．
+以下，$G_{hyd}$を水和エネルギーと呼ぶ．
+なお，$\Psi_{LJ}$は，非平衡状態においても
+定めることができる.式(\ref{eqn:equiv_rH})は平衡状態において
+成り立つ式だから,平衡状態における相互作用ポテンシャルであることを
+明示するために$\Psi_{LJ}$でなく$\left< \Psi_{LJ}\right>$と表記している.
+非平衡状態を含め，CG-MD系の相互作用ポテンシャルは，
+Lenard-Jones対ポテンシャルを
+\begin{equation}
+	U(\fat{x}_i,\fat{x}_j; \sigma) 
+	= 4 \varepsilon 
+	\left\{ 
+	\left(\frac{\sigma}{r_{ij}}\right)^{12}
+	-
+	\left(\frac{\sigma}{r_{ij}}\right)^6
+	\right\}, \ \ \left( r_{ij}=\left| \fat{x}_i-\fat{x}_j\right| \right)
+	\label{eqn:LJ}
+\end{equation}
+として，
+\begin{equation}
+	\Psi_{LJ}=\sum_{i<j} U(\fat{x}_i,\fat{x}_j; \sigma) 
+	\label{eqn:def_PsiLJ}
+\end{equation}
+で与えられる．ただし，$\fat{x}_i$と$\fat{x}_j$は，それぞれ第$i$および第$j$番目
+の粗視化粒子の位置を表し，
+$\varepsilon$は
+\begin{equation}
+	\varepsilon=1.0\times 10^{-19}, \ \ [{\rm Nm}]
+	\label{eqn:eps_of_LJ}
+\end{equation}
+である．また，パラメータ$\sigma$は，層間距離を制御する変数で，粗視化粒子に水和した水分量としての意味をもつ．
+平衡状態における相互作用ポテンシャルは，式\ref{eqn:def_PsiLJ}のアンサンブル平均
+\begin{equation}
+	\left< \Psi_{LJ}\right>
+	=
+	\frac{1}{T_d}\int_0^{T_d} \Psi_{LJ}(t)dt
+	\label{eqn:Psi_eq}
+\end{equation}
+で得られる．ただし，
+%$M$はCG-MD系における粗視化粒子数，
+$T_d$は計算時間，$t$は時間変数を表し，
+$\Psi(t)$は時刻$t$におけるポテンシャルエネルギーの瞬間値を意味する．\\
+
+$\<\Psi_LJ >$や$G_{hyd}$は熱力学的なマクロ変数であるから，
+温度$T$，圧力$P$, 水分子数$N$を独立変数として表すことができる．
+ここでは温度は一定であるとして，$P$と$N$を使い，
+\begin{equation}
+	G(P,N)=\left< \Psi_{LJ} \right>(P,N) +G_{hyd}(P,N)
+	\label{eqn:Gtot_PN}
+\end{equation}
+と書く．系の体積$V$と化学ポテンシャル$\mu$は，自由エネルギー$G$の微分として
+次のように与えられる．
+\begin{eqnarray}
+	V &= & 
+	\left( \frac{\partial G}{\partial P} \right)_N 
+	=
+	\left( \frac{\partial \left< \Psi_{LJ}\right>}{\partial P} \right)_N 
+	+
+	\left( \frac{\partial G_{hyd}}{\partial P} \right)_N 
+	\label{eqn:G2V}
+	\\
+	\mu &= & \left( \frac{\partial G}{\partial N} \right)_P 
+	=
+	\left( \frac{\partial \left< \Psi_{LJ}\right>}{\partial N} \right)_P 
+	+
+	\left( \frac{\partial G_{hyd}}{\partial N} \right)_P 
+	\label{eqn:G2mu}
+\end{eqnarray}
+ここで，$\left<\Psi_{LJ}\right>$は系の体積と圧力の関係を，
+$G_{hyd}$は水分と化学ポテンシャルの関係を定める
+自由エネルギー成分となるように，分割されていると仮定する．
+すなわち，
+\begin{eqnarray}
+	\left( \frac{\partial \left< \Psi_{LJ}\right>}{\partial P} \right)_N=0, 
+	& \Rightarrow & 
+	\left< \Psi_{LJ}\right>(P,N) = \left< \Psi_{LJ}\right>(P) 
+	\label{eqn:assuption1}
+	\\ 
+	\left( \frac{\partial G_{hyd}}{\partial N} \right)_P =0
+	& \Rightarrow & 
+	\left< G_{hyd}\right>(P,N) = \left< G_{hyd}\right>(N) 
+	\label{eqn:G2mu}
+	\label{eqn:asumption2}
+\end{eqnarray}
+のような分割であることを要請する($\Psi_{LJ}$は$N$に依存するが，
+$\left<\Psi_{LJ}\right>$をある種の平衡状態について$N$に依存
+しないようにすることは可能である)．
+このとき，式(\ref{eqn:G2mu})は
+\begin{equation}
+	\mu= \left( \frac{\partial G_{hyd}}{\partial N} \right)_P 
+	=
+	\frac{dG_{hyd}}{dN}
+	\label{eqn:G2mu_2}
+\end{equation}
+となり，平衡条件(\ref{eqn:equiv_mu})は，
+\begin{equation}
+	\frac{d G_{hyd}}{d N}
+	=
+	\mu_w^{sat} +k_BT \log \left( r_H \right)
+	\label{eqn:mu_hyd}
+\end{equation}
+となる．
+ 従って，式(\ref{eqn:mu_hyd})の両辺を水分子数\(N\)で積分することができれば，
+水和エネルギー\(G_{hyd}\)が得られる．しかしながら，
+左辺が\(N\)に関する式である一方，右辺は相対湿度\(r_H\)を通じて\(N\)が変数となっている
+ため，\(r_H\)と\(N\)の関係を与える必要がある．
 %--------------------
 \begin{figure}[h]
 	\begin{center}
@@ -90,6 +196,124 @@ $\Psi_{LJ}$はCG-MD法において既に定義されているものであるた�
 	\label{fig:fig2}
 \end{figure}
 %--------------------
+\subsection{相対湿度と水分子数の関係}
+粘土の粉末X線回折試験(X-Ray Diffraction)を行えば，回折ピークから粘土層間の距離
+\(h\)が求まる．諸留，河村(2009)は，相対湿度と温度を制御した環境下で
+その場X線回折試験を行い，温度一定条件での相対湿度と層間距離の関係
+\begin{equation}
+	h=h(r_H), \ \ (0 \leq r_H \leq 1)
+	\label{eqn:hz_rh}
+\end{equation}
+を,\(r_H=0\)から1の範囲で詳細に調べている．
+%	<img src="FreeEnergy/XRD_swelling.png" width=400, height=300><img>
+%	<figcaption>X線回折試験で得られた相対湿度と層間距離の関係</figcaption>
+図\ref{fig:fig1}はその結果の一部である，Na型モンモリロナイトに対する
+温度50\(^\circ\)Cでの結果を文献から復元したもので，
+横軸は相対湿度，縦軸は層間距離を示している．
+これを式(\ref{eqn:hz_rh})として用いれば，環境の相対湿度と
+粘土含水系の層間距離を結びつけることができる．
+従って，層間距離\(h\)と粘土層間の水分子数\(N\)の関係が
+得られば，二つの関係式を使って\(r_H\)と\(N\)の関係が与えられ，
+式(\ref{eqn:mu_hyd})の両辺を\(N\)あるいは\(r_H\)に変数を
+統一して書くことができる．この目的のために，全原子分子動力学法で計算によって
+得られた，層間距離と水和モル数\(n\)の関係:
+\begin{equation}
+	h=h(n)
+	\label{eqn:hz_nw}
+\end{equation}
+を用いる．図\ref{fig:fig1}-(b)は，全原子MD計算から得られた式(\ref{eqn:hz_nw})の
+関係で，実験で観測された，相対湿度0から1の間で取り得る
+層間距離の範囲でプロットしたものである．
+%<figcaption>全原子分子動力学計算で得られた水和モル数\(n\)と層間距離\(h\)の関係</figcaption>
+式(\ref{eqn:hz_nw})と式(\ref{eqn:hz_rh})の逆関数\(r_H=r_H(h)\)を合成すれば，
+\begin{equation}
+	r_H=r_H(h(n))
+	\label{eqn:rh_nw}
+\end{equation}
+が得られ，この関係を計算してグラフ化すると図\ref{fig:fig2}にあるようになる．
+%<img src="FreeEnergy/RH_nH2O.png", width=400,height=350><img>
+%	<figcaption>
+		XRD測定結果の\(h=h(r_H)\)と全原子MD計算結果の\(h=h(n)\)
+		から得られた合成関数\(r_H=r_H(n)\).
+%</figcaption>
+さらに，式(\ref{eqn:rh_nw})を式(\ref{eqn:mu_hyd})に代入し，
+\begin{equation}
+	N=nN_A, \ \ (N_A=6.023\times 10^{23}:アボガドロ数)
+	\label{eqn:}
+\end{equation}
+であることを考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した
+次の関係が得られる．
+\begin{equation}
+	\frac{d G_{hyd}}{d n}
+	=
+	\mu_w^{sat}N_A +k_BN_AT \log \left\{ r_H(n) \right\}
+	\label{eqn:mu_hyd_n0}
+\end{equation}
+ここで，\(\mu_{sat}N_A\)は化学ポテンシャルを1molあたりの
+量として表したもので，\(k_B N_A\)は気体定数\(R\)である．
+そこで，化学ポテンシャルを[J/mol]の単位で与えるものとして，\(N_A\)を
+省略すれば，式\ref{eqn:mu_hyd_n0}は
+\begin{equation}
+	\frac{d G_{hyd}}{d n}
+	=
+	\mu_w^{sat} +RT \log \left( r_H(n) \right)
+	\label{eqn:mu_hyd_n}
+\end{equation}
+と表すことができる．これを定温条件で,湿度1を基準として積分すれば,
+自由エネルギーの変化
+\begin{equation}
+	\Delta G_{hyd} = G_{hyd}(n)-G_{hyd}(n_{sat})
+	\label{eqn:del_G}
+\end{equation}
+が
+\begin{equation}
+	\Delta G_{hyd}
+	=
+	\mu_{sat}\Delta n
+	+
+	RT
+	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn, \ \ (0 \leq n \leq n_{sat})
+	\label{eqn:del_G_mu}
+\end{equation}
+で計算できる.
+ただし,\(n_{sat}\)は相対湿度\(r_H=1\)のときに、粉末状の粘土がとる
+層間水量で,\(\Delta n\)はその増分
+\begin{equation}
+	\Delta n = n-n_{sat}
+\end{equation}
+を意味する. また，粘土含水系の化学ポテンシャルは
+\begin{equation}
+	\mu
+	=
+	\frac{d G}{d n}
+	\simeq
+	\frac{d G_{hyd}}{d n}
+	=
+	\mu_w^{sat} +RT \log \left\{ r_H(n) \right\}
+	\label{eqn:mu_system}
+\end{equation}
+式(\ref{eqn:mu_system})より，層間水量による化学ポテンシャルの変化は
+右辺第二項で与えられ，この項が粘土の膨潤特性を表現している．
+また，対応する自由エネルギー変化の成分は，
+式(\ref{eqn:del_G_mu})の右辺第二項の積分で与えられる非線形項で，
+右辺第1項の\(n\)に関する線形項は，粘土の膨潤特性とは関係しない．
+そこで，
+\begin{equation}
+	\delta \mu = \mu-\mu_{w}^{sat}
+	=
+	RT \log \left\{ r_H(n)\right\} dn
+\end{equation}
+\begin{equation}
+	\delta G_{hyd} =
+	RT
+	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn
+\end{equation}
+として，これらの\(n\)に対する変化を描くと，下の図に示す結果が得られる．
+% <img src="FreeEnergy/Muvar_nH2O.png", width=400, height=350></img>
+%<figcaption> 水和モル数と化学ポテンシャルの湿度依存項\(\delta \mu\)の関係 </figcaption>
+%
+%<img src="FreeEnergy/Gvar_nH2O.png", width=400, height=350></img>
+%<figcaption> 水和モル数と水和自由エネルギーの湿度依存項\(\delta G_{hyd}\)の関係 </figcaption>
 %--------------------
 \subsection{粒子間相互作用力}
 CGMD法では，粗視化粒子に作用する力として分子内力と分子間力の2つを与える．
@@ -110,13 +334,6 @@ CGMD法では，粗視化粒子に作用する力として分子内力と分子�
 	\label{eqn:LJ}
 \end{equation}
 で与える．
-ここで，$\fat{x}_i$と$\fat{x}_j$は，それぞれ第$i$および第$j$番目の粗視化粒子の位置を，
-$\varepsilon$と$\sigma$は，LJポテンシャルのパラメータを表す．$\varepsilon$は
-\begin{equation}
-	\varepsilon=1.0\times 10^{-19}, \ \ [{\rm Nm}]
-	\label{eqn:eps_of_LJ}
-\end{equation}
-であり，$\sigma$は以下に述べるように粗視化粒子に水和した水分量を表す変数として用いる．
 
 LJポテンシャルは粒子間距離$r_{ij}$が小さいときに斥力を，大きいときに引力を粒子間に作用させる．
 引力と斥力は概ね$r_{ij}=1.1\sigma$を境に切り替わる．
@@ -165,150 +382,6 @@ CGMD法では，各粗視化粒子は位置$\fat{x}$と速度$\fat{v}$，向き$
 	\end{center}
 \end{table}
 %--------------------
-\subsection{水分に関係したエネルギー}
-粘土含水系を表現する粗視化粒子系は，水分の配置や量に応じて系全体がもつエネルギーを変化させる．
-水分の量や配置に依存するエネルギーには，次のものが考えられる．
-\begin{itemize}
-\item
-	粗視化粒子間相互作用のエネルギー(LJポテンシャル)$U_{LJ}$
-\item
-	水和エネルギー$U_{hyd}$
-\item
-	系内の水分量に依存するエネルギー$U_N$
-\end{itemize}
-粒子間相互作用エネルギー$U_{LJ}$は，LJポテンシャル(\ref{eqn:LJ})の特性距離$\sigma$を
-通じて水分位置と量の影響を受ける．上記$U_{LJ}$は粒子径の全ポテンシャルエネルギーである
-ため，CGMDを法では次の式で与えられる．
-\begin{equation}
-	U_{LJ}=\sum_{i \neq j} U(\fat{x}_i,\fat{x}_j; \sigma) 
-	\label{eqn:}
-\end{equation}
-$U_{hyd}$は，水分が粘土分子の表面や層間に水和することによるエネルギー変化を表す．
-水和水層の厚さが$s$における粗視化粒子の水和エネルギーを$u(s)$とすれば，
-$U_{hyd}$は
-\begin{equation}
-	U_{hyd} =\sum_{\alpha=\pm} \sum_{i} u(s_i^{\alpha})
-	\label{eqn:Uhyd_tot}
-\end{equation}
-と表される．なお，ここでは水和エネルギーの基準を無水状態にとり，$u(0)=0$としている．
-モンモリロナイトは大きなは膨潤や膨潤圧を生じることからも明らかなように，
-湿潤環境下で強い水和が生じる．従って，水和エネルギー$U_{hyd}$は$U_{LJ}$との比較において
-無視できない．
-最後に，$U_{N}$は系内に存在する水分量の変動だけに起因したエネルギーを表す．
-一般に，系外から物質を持ち込み，系の組成を変化させるためにはエネルギーが必要とされ，
-$U_N$は系内外での水分の授受に関するものである．
-水分粘土含水系と環境をひとまとめにして見たとき，粘土含水系内の水分と環境中の水分では
-濃度が異なる．そのため粘土含水系は，系内での水分位置によらず，系外との濃度差に
-起因したエネルギー$U_N$を持つ．
-CGMD法では水分を粗視化粒子の属性として表現するため，水分や水分子間の相互作用力や
-相互作用エネルギーは計算されない．従って，これら$U_{hyd}$や$U_{N}$はモデルや
-計算条件として別途与える必要がある．
-
-熱力学の第二法則に従えば，水分量と位置の自発的変化はこれら3つのエネルギーの和
-\begin{equation}
-	E=U_{LJ}+U_{hyd}+U_{N}
-	\label{eqn:}
-\end{equation}
-が減少する方向に起きる．このことは，水分位置と量の変化に関する全微分を使って
-\begin{equation}
-	dE = dU_{LJ}+dU_{hyd}+dU_N <0
-	\label{eqn:dE}
-\end{equation}
-と表され，平衡状態では停留条件$dE=0$満足する．なお，$U_N$は水分配置に依らないため，
-系内の水分子数を$N$とすれば，
-\begin{equation}
-	dU_N=\mu dN, \ \ \left(  \mu:=\frac{\partial U_N}{\partial N}\right)
-	\label{eqn:}
-\end{equation}
-とできる．ここで$\mu=\frac{\partial U_N}{\partial N}$は水分に関する化学ポテンシャルを表す．
-化学ポテンシャル一定のもとで計算を行う場合，式(\ref{eqn:dE})右辺の各項を計算し，
-$dE<0$となる方向に水分状態を推移させる．この作業を繰り返し，最終的に停留条件$dE=0$
-が満足される状態まで粗視化粒子径を緩和させれば，平衡状態における水分量と配置が決定できる．
-その際，指定された化学ポテンシャルが$\mu>0$であれば，系内の水分が増加するとき$dN>0$で$U_N$も増加する．
-これに対し水和エネルギー$U_{hyd}$は，水分量に関する負の減少関数のため，$dN>0$のとき$dU_{hyd}<0$である．
-一方，$dU_{LJ}$は水分量の増加に対して正にも負にも成り得る．例えば，周囲の粒子から斥力を受ける
-粗視化粒子に水分が追加されると，斥力はさらに大きくなりポテンシャル値も増加する．
-逆に，粗視化粒子が疎に配置された状態で水分が追加されれば，粒子間の引力が増しポテンシャルは減少する．
-このように，水和エネルギー$U_{hyd}$と水分量に関する$U_N$は相反する応答を示し，
-ポテンシャルエネルギー$U_{LJ}$は状況に応じて増減方向が決まる．
-平衡状態における水分量と配置は，これらのエネルギー変化が互いに拮抗する状態として決定される．
-化学ポテンシャル$\mu$は定義上,その値が大きい場合，環境から水分を系内に取り込む際に要するエネルギーが大きい．
-逆に$\mu$が小さく設定されていれば，わずかなエネルギーを供給するだけで系内に水分を取り込むことができる．
-これを物理的な状況にあてはめると，前者は粘土含水系が置かれた環境の湿度が低い場合に，
-後者は湿度が高い場合に相当する．環境の湿度が低い場合，そこから所定の水分を粘土含水系に
-移すために要するエネルギーは湿度が高い場合よりも大きいことは明らかであろう．
-以上のことから，化学ポテンシャルの逆数$\mu^{-1}$は 粘土含水系が置かれた環境の湿度の
-高低に相当する指標とみなすことができる．
-
-CGMD法では水分量を表す変数は，水和水層の厚さ$s$であり水分子数$N$ではない．そこで，
-CGMD法への実装において，水分量に関するエネルギー$U_N$の変化を
-\begin{equation}
-	dU_N=\tilde \mu ds, \ \ \left( \tilde \mu =\mu \frac{dN}{ds} \right)
-	\label{eqn:}
-\end{equation}
-と表し，$\tilde \mu$を与えて計算を行う．$\tilde \mu$と$\mu$は定数倍だけの差であるため，
-以下では$\tilde \mu$も化学ポテンシャルと呼ぶことにする．ただし，$\mu$がエネルギーの次元を持つのに対し，
-$\tilde \mu$はエネルギー/長さの次元を持つことに注意する．
-\subsection{水和エネルギー}
-平衡状態においてどの程度の水分が系内に取り込まれるかは，化学ポテンシャル$\mu$の大小だけでなく，
-$U_{LJ}$や$U_{hyd}$との兼ね合いで決まる．特に，水分量に関するエネルギー$U_N$と増減が反転する
-水和エネルギー$U_{hyd}$の影響は大きい．また，水和エネルギーは，粘土鉱物や層間イオン種による
-吸水や膨潤挙動の違いを生むという意味でも重要である．
-従って，水和エネルギーと膨潤挙動の関係を理解することが，適切な組織構造モデルを得る
-ために必要と言える．
-%
-\subsubsection{単調モデル}
-図\ref{fig:fig1}(a)に，昨年度の研究で用いた水和エネルギーモデルを示す．ここでいう
-水和エネルギーモデルとは，粗視化粒子の各方向に水和した，水和水の層厚と水和エネルギーの
-関係を指す．図\ref{fig:fig1}(a)の水和エネルギーモデルは次の式で与えられる．
-\begin{equation}
-	u(s)=-u_{\infty} \left(1-e^{-\gamma s} \right)
-	\label{eqn:u_s}
-\end{equation}
-ここに，$s$は水和水層の厚さを，$s_b$は
-\begin{equation}
-	\frac{\left| u(s_b) \right|}{u_{\infty}}=\frac{1}{2}
-	\label{eqn:u_sb}
-\end{equation}
-となる基準距離を，$u_{\infty}$は$s\rightarrow \infty$(無限膨潤)
-での水和エネルギーの大きさを表す．
-全水和エネルギー$U_{hyd}$を与える式(\ref{eqn:Uhyd_tot})の右辺は，
-式(\ref{eqn:u_s})をはじめとする水和エネルギーモデルによって計算する．
-式(\ref{eqn:u_sb})より
-\begin{equation}
-	e^{-\gamma s_b}=\frac{1}{2} \ \ \Rightarrow \ \
-	\gamma=\frac{\log 2}{s_b}
-	\label{eqn:}
-\end{equation}
-である．よって，$s_b$を与えれば$\gamma$が決まる．
-図\ref{fig:fig1}(b)は，$u(s)$の勾配$u'(s)$を示したもので，
-\begin{equation}
-	u'(s)=\frac{du}{ds}=-\gamma u_{\infty} e^{-\gamma s}
-	\label{eqn:ud_s}
-\end{equation}
-より，
-\begin{equation}
-	\frac{u'(s_b)}{u'(0)}=\frac{1}{2}
-	\label{eqn:ud_half}
-\end{equation}
-で，$s=s_b$において水和エネルギー関数の勾配も半減することが分かる．
-このような水和エネルギーモデルを用いる理由は以下の通りである．
-\begin{itemize}
-\item
-	単調減少する関数であること
-\item
-	$u(0)=0$かつ$s\rightarrow \infty$で有界であること
-\item
-	勾配の大きさが単調減少し，$s\rightarrow \infty$で0に収束すること
-\end{itemize}
-モンモリロナイトは水分子を強く水和し，最終的には分散状態に至る．
-このことから，水和エネルギーは大局的に減少する関数でなければならない．
-ただし，水和エネルギーが無限大となることは物理的でないため，2番目の条件を課す．
-3番目の条件は，水和量が少ない程，より強く水分を吸着することを意味する．
-式(\ref{eqn:u_s})は，これらの条件を満たすもののうち，単純かつ少数のパラメータで
-規定できるものとして，昨年度採用したものである．以下ではこれを，単調モデルと呼ぶ．
-なお，今回の計算では，基準距離を$s_b=0.1$nmとしている．
-%
 \subsubsection{振動モデル}
 X線回折試験の結果から，Na型モンモリロナイトは相対湿度の増加に対して階段状に
 層間距離を変化させることが知られている．層間距離は，概ね水分子整数個分程度となり，
@@ -325,93 +398,4 @@ $n$層($n=1,2,\dots$)膨潤状態における水和水層の厚さ$s$は，
 そこで，周期0.15nmの振動成分を単調モデルに加えることを考える．
 図\ref{fig:fig2}(a)に，黒の実線でこの方法で作成した振動成分を有する
 水和エネルギーモデルを示す．以下，この水和エネルギーモデルを振動モデルと呼ぶ．
-単調モデルに加えたで振動成分は，同図(b)に緑の実線で示したものである．
-これは，周期$H=$0.15nmの三角波を平滑化したもので，元になる三角波は
-周期毎に一定割合で減衰させている．
-ここで，単調モデルを$u_0(s)$，これに加えた平滑化した減衰三角波成分を$\Delta u(s)$
-とすれば，振動モデルは
-\begin{equation}
-	u(s)=u_0(s)+ \Delta u(s)
-	\label{eqn:}
-\end{equation}
-と表される．単調モデルは，大きさを表す項$u_{\infty}$と，関数系を決める無次元の項
-$\bar u_0$の積で，
-\begin{equation}
-	u_0(s)=u_{\infty} \bar{u}(s), \ \ (\bar{u}(s)=-(1-e^{-\gamma s}))
-	\label{eqn:}
-\end{equation}
-と書くことができる．振動成分$\Delta u(s)$の詳細は，以下のようである．
-
-
-はじめに，周期関数の基本区間を$[0,H)$とし，この区間における高さ1の単一の三角波を
-\begin{equation}
-	V_0(s)=\left\{
-		\begin{array}{cc}
-			s/H & (0\leq s < H) \\
-			0 & ({\rm otherwise})
-		\end{array}
-	\right.
-	\label{eqn:V0}
-\end{equation}
-と書く．これを平行移動して順次加えることで，$s\geq 0$における周期関数$V(s)$が次の
-ように得られる．
-\begin{equation}
-	V(s)=\sum_{k=0}^{\infty} \beta ^{k} V_0(s-kH)
-	\label{eqn:Vs}
-\end{equation}
-ここで，$\beta(<1)$は減衰率で，隣接する三角波の振幅比を与えるパラメータである．
-$V(s)$は$s=kT$において不連続であるため，ガウス分布等を重み関数w(s)として移動平均
-\begin{equation}
-	\tilde V(s)=\int V(t)w(s-t)dt
-	\label{eqn:mv_ave}
-\end{equation}
-で平滑化し，連続かつ滑らかな関数$\tilde V(s)$にする．
-$V_0(s)$の平滑化を$\tilde V_0(s)$とすれば，平滑化された減衰三角波は
-\begin{equation}
-	\tilde V(s)=\sum_{k=0}^{\infty} \beta ^{k} \tilde V_0(s-kH)
-	\label{eqn:Vst}
-\end{equation}
-と書ける．式(\ref{eqn:Vst})は無次元の関数なので，これを単調成分$u_0(s)$の
-無次元項$\bar{u}(s)$と比率$\alpha$で加えるために，
-$\Delta u(s)=u_\infty\alpha \tilde V(s)$とする．
-以上より，振動モデルを与える式は次のように表される．
-\begin{equation}
-	u(s)=u_0(s)+ \alpha \tilde V(s)= u_{\infty}\left\{ 
-	\bar{u}(s)+ \alpha \sum_{k=0}^{\infty} \beta ^{k} \tilde V_0(s-kH)
-	\right\}
-	\label{eqn:us_triwv}
-\end{equation}
-式(\ref{eqn:us_triwv})は3つのパラメータ$u_{\infty},\alpha$および$\beta$で
-定義される．$u_{\infty}$は$s\rightarrow \infty$での水和エネルギーの大きさを，$\alpha$は
-単調成分と振動成分の比を，$\beta$は振動成分の減衰率をそれぞれ表す．
-次節の計算例では，これらのパラメータは次のように与える．
-\begin{equation}
-	\alpha=0.22, \ \ \beta=0.6, \ \ H=0.15 \ \ [{\rm nm}]
-	\label{eqn:}
-\end{equation}
-%--------------------
-\begin{figure}[h]
-	\begin{center}
-%	\includegraphics[width=1.0\linewidth]{Figs/fig1.eps} 
-	\end{center}
-	\caption{
-		単調減少する水和エネルギーのモデル(単調モデル).
-		$u_{\infty}$は$s\rightarrow \infty$での大きさ．$s_b$は$u=\frac{1}{2}u_{\infty}$となる
-		水和層厚さを表す．
-	} 
-	\label{fig:fig1}
-\end{figure}
-%--------------------
-\begin{figure}[h]
-	\begin{center}
-%	\includegraphics[width=1.0\linewidth]{Figs/fig2.eps} 
-	\end{center}
-	\caption{
-		水和エネルギーモデルとその成分(内訳)．
-		(a)振動モデル(i)と単調モデル(ii)．
-		(b)振動モデル(ii)の成分:単調(青)および振動成分(緑)．
-		赤は平滑化して振動成分を与えるために用いた三角波．
-	} 
-	\label{fig:fig2}
-\end{figure}
 %--------------------
