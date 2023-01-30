@@ -158,7 +158,7 @@ if __name__=="__main__":
         else:
             ptc0.hist(ax,bins=bins,rng=xrng,clr="g") 
 
-        fnout=fname.replace(".dat",".png")
+        fnout=fname.replace(".dat","_2.png")
         fnout="hist_"+fnout
         print(fnout)
         ax.set_xlim(xrng)
