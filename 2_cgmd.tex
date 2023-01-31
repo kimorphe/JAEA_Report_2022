@@ -1,5 +1,5 @@
 ﻿\section{Na型モンモリロナイトの水和エネルギーモデル}
-\subsection{水蒸気の化学ポテンシャル}
+\subsection{水分浴の化学ポテンシャル}
 粘土含水系が温度$T$，相対湿度$r_H$の水蒸気に接しているとする．
 水蒸気は粘土含水系に対して水分浴の役割を果たし，
 その化学ポテンシャル$\mu_w$と$r_H$の関係は次のように表される\cite{Tombach}．
@@ -13,11 +13,11 @@
 	\right\}
 	\label{eqn:mu_rH}
 \end{equation}
-ただし，$k_B(=1.380649\times 10^{−23}$[J/K]はボルツマン定数を，
-$P_w$と$P^{sat}_w$はそれぞれ水分浴の蒸気圧と飽和蒸気圧[Pa]を表す．
+ただし，$k_B(=1.380649\times 10^{-23}$[J/K])はボルツマン定数を，
+$P_w$と$P^{sat}_w$はそれぞれ水分浴の蒸気圧と飽和蒸気圧を表す．
 また，$\phi(P)$は蒸気圧$P$におけるフガシティー係数を，
 $\mu_w^{sat}$は$P=P^{sat}_w$における水分浴の化学ポテンシャルを意味する．
-ここでは簡単のためフガシティー係数を1にとり，式(\ref{eqn:mu_rH})を
+ここでは，簡単のためフガシティー係数を1にとり，式(\ref{eqn:mu_rH})を
 \begin{equation}
 	\mu_w
 	=
@@ -27,7 +27,7 @@ $\mu_w^{sat}$は$P=P^{sat}_w$における水分浴の化学ポテンシャルを
 	\right)
 	\label{eqn:mu_rH_simple}
 \end{equation}
-として用いる．いま，水分浴に接して平衡状態にある粘土含水系の化学ポンテンシャルを$\mu$とすれば， 
+として用いる．いま，水分浴と平衡状態にある粘土含水系の化学ポンテンシャルを$\mu$とすれば， 
 $\mu$は水分浴の化学ポテンシャルに一致する．すなわち
 \begin{equation}
 	\mu=\mu_{w}
@@ -35,23 +35,22 @@ $\mu$は水分浴の化学ポテンシャルに一致する．すなわち
 \end{equation}
 が成り立つ．
 \subsection{粘土含水系の自由エネルギー}
-粘土含水系の自由エネルギーを$G$とする．
-系内の水分に関する化学ポテンシャルである$\mu$は，$G$を水分子数$N$で
-微分することにより，
+粘土含水系の自由エネルギーを$G$とする．粘土含水系内の水分に関する化学ポテンシャルである$\mu$は，
+$G$を水分子数$N$で微分し，
 \begin{equation}
 	\mu=\frac{\partial G}{\partial N}
 	\label{eqn:mu_GN}
 \end{equation}
-で与えられる．ここで，CG-MD法における自由エネルギーを次のように
-粗視化粒子間相互作用に関するポテンシャルエネルギー$\left<\Psi_{LJ}\right>$と
-は層間水の水和に関する自由エネルギー$G_{hyd}$の和として
+で与えられる．ここで，CG-MD系のもつ自由エネルギーを，
+粗視化粒子間相互作用ポテンシャル$\left<\Psi_{LJ}\right>$と
+層間水の水和に関する自由エネルギー$G_{hyd}$に分割し，
 次のように表す．
 \begin{equation}
 	G=\left< \Psi_{LJ} \right> +G_{hyd}
 	\label{eqn:Gtot}
 \end{equation}
-このように表現した自由エネルギー$G$に対し，
-平衡状態において式(\ref{eqn:equiv_mu})が満足されるように$G_{hyd}$を与える．
+このように表現した自由エネルギー$G$に対し，平衡状態で式(\ref{eqn:equiv_mu})
+が満足されるように$G_{hyd}$を与える．
 そこで，式(\ref{eqn:mu_rH_simple})と式(\ref{eqn:Gtot})を式(\ref{eqn:equiv_mu})
 に代入すれば，
 \begin{equation}
@@ -67,13 +66,13 @@ $\mu$は水分浴の化学ポテンシャルに一致する．すなわち
 	\right)
 	\label{eqn:equiv_rH}
 \end{equation}
-が得られ，この関係を用いて$G_{hyd}$を定める．以下では$G_{hyd}$を水和エネルギーと呼ぶ．
+が得られる．以下，$G_{hyd}$を水和エネルギーと呼ぶ．
 なお，CG-MD法における相互作用ポテンシャルは，非平衡状態でも定めることができる.
-一方，式(\ref{eqn:equiv_rH})は平衡状態で成り立つ式だから,
-平衡状態における相互作用ポテンシャルであることを明示するために$\Psi_{LJ}$でなく
-$\left< \Psi_{LJ}\right>$と表記している. \\
+一方，式(\ref{eqn:equiv_rH})は平衡状態で成り立つ式である．このことから，
+平衡状態における相互作用ポテンシャルであることを明示するために，
+$\Psi_{LJ}$でなく$\left< \Psi_{LJ}\right>$と表記している. \\
 \hspace{\parindent}
-非平衡状態を含め，CG-MD系の相互作用ポテンシャルは，Lenard-Jones対ポテンシャルを
+CG-MD系の相互作用ポテンシャルは，Lenard-Jones対ポテンシャル:
 \begin{equation}
 	U(\fat{x}_i,\fat{x}_j; \sigma) 
 	= 4 \varepsilon 
@@ -84,7 +83,7 @@ $\left< \Psi_{LJ}\right>$と表記している. \\
 	\right\}, \ \ \left( r_{ij}=\left| \fat{x}_i-\fat{x}_j\right| \right)
 	\label{eqn:LJ}
 \end{equation}
-として，
+により，
 \begin{equation}
 	\Psi_{LJ}=\sum_{i<j} U(\fat{x}_i,\fat{x}_j; \sigma) 
 	\label{eqn:def_PsiLJ}
@@ -96,22 +95,22 @@ $\varepsilon$は
 	\varepsilon=1.0\times 10^{-19}, \ \ [{\rm Nm}]
 	\label{eqn:eps_of_LJ}
 \end{equation}
-である．また，ポテンシャルの基準距離$\sigma$は，層間距離を制御する変数であり
+である．また，ポテンシャル$U$の基準距離$\sigma$は，層間距離を制御する変数であるとともに，
 粗視化粒子に水和した水分量としての意味をもつ．平衡状態における相互作用ポテンシャルは，
-式\ref{eqn:def_PsiLJ}の時間$t$における瞬間値$\Psi_{LJ}(t)$の平均として
+式(\ref{eqn:def_PsiLJ})の時間$t$における瞬間値を$\Psi_{LJ}(t)$として，その平均
 \begin{equation}
 	\left< \Psi_{LJ}\right>
 	=
 	\frac{1}{T_d}\int_{t_0}^{t_0+T_d} \Psi_{LJ}(t)dt
 	\label{eqn:Psi_eq}
 \end{equation}
-から得られる． ただし，式(\ref{eqn:Psi_eq})の適用にあたり，
-$T_d$は十分に長く対象とする系は開始時刻$t_0$に依存しない
-平均値を与える状態にあることが前提となる．\\
+で与えられる．ただし，式(\ref{eqn:Psi_eq})において$T_d$は十分に長く，
+対象とする系は時刻$t_0$に依存しない平均値を与える状態にあることを
+前提としている．\\
 \hspace{\parindent}
-$\<\Psi_LJ >$や$G_{hyd}$は熱力学的なマクロ変数であるから，
+$\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量だから，
 温度$T$，圧力$P$, 水分子数$N$を独立変数として表すことができる．
-ここでは温度$T$は一定として，$P$と$N$を引数として
+ここでは，温度$T$は一定として引数から省略し，$P$と$N$を用いて
 \begin{equation}
 	G(P,N)=\left< \Psi_{LJ} \right>(P,N) +G_{hyd}(P,N)
 	\label{eqn:Gtot_PN}
@@ -134,9 +133,9 @@ $\<\Psi_LJ >$や$G_{hyd}$は熱力学的なマクロ変数であるから，
 	\left( \frac{\partial G_{hyd}}{\partial N} \right)_P 
 	\label{eqn:G2mu}
 \end{eqnarray}
-ここで，$\left<\Psi_{LJ}\right>$は系の体積$V$と圧力$P$の関係を，
-$G_{hyd}$は水分量$N$と化学ポテンシャル$\mu$の関係をそれぞれ定める
-自由エネルギー成分となるように分割されていると仮定する．
+ここで，力学的な量である$\left<\Psi_{LJ}\right>$は系の体積$V$と圧力$P$の関係を，
+層間水に関する量である$G_{hyd}$は水分量$N$と化学ポテンシャル$\mu$の関係を，
+それぞれ定めるエネルギー成分となるように$G$を分割することを要請する．
 すなわち，式(\ref{eqn:Gtot_PN})は
 \begin{eqnarray}
 	\left( \frac{\partial \left< \Psi_{LJ}\right>}{\partial N} \right)_P=0, 
@@ -150,18 +149,18 @@ $G_{hyd}$は水分量$N$と化学ポテンシャル$\mu$の関係をそれぞれ
 	\label{eqn:G2mu}
 	\label{eqn:asumption2}
 \end{eqnarray}
-を満足する自由エネルギーの分割であることを要請する($\Psi_{LJ}$は
-パラメータ$\sigma$を通じて$N$に依存するが，
-$\left<\Psi_{LJ}\right>$をある種の平衡状態について$N$に依存
-しないようにすることは可能である)．
-このとき，式(\ref{eqn:G2mu})より式(\ref{eqn:mu_GN})は
+を満足するような自由エネルギーの分割であるとする．
+%($\Psi_{LJ}$はパラメータ$\sigma$を通じて$N$に依存するが，
+%$\left<\Psi_{LJ}\right>$をある種の平衡状態について$N$に依存
+%しないようにすることは可能である)．
+このとき，式(\ref{eqn:mu_GN})は，式(\ref{eqn:G2mu})より
 \begin{equation}
 	\mu= \left( \frac{\partial G_{hyd}}{\partial N} \right)_P 
 	=
 	\frac{dG_{hyd}}{dN}
 	\label{eqn:G2mu_2}
 \end{equation}
-となり，平衡条件(\ref{eqn:equiv_mu})を次のように表すことができる．
+となり，平衡条件(\ref{eqn:equiv_rH})を次のように表すことができる．
 \begin{equation}
 	\frac{d G_{hyd}}{d N}
 	=
@@ -171,25 +170,23 @@ $\left<\Psi_{LJ}\right>$をある種の平衡状態について$N$に依存
 \subsection{相対湿度と水分子数の関係}
 式(\ref{eqn:mu_hyd})の両辺を水分子数\(N\)で積分することができれば，
 水和エネルギー\(G_{hyd}\)を決めることができる．しかしながら，
-式(\ref{eqn:mu_hyd})は左辺が\(N\)に関する式である一方，
-右辺は相対湿度\(r_H\)を通じて\(N\)に依存する形となっている．
-従って，$N$を変数として積分を行うためには，
-\(r_H\)と\(N\)の関係を与える必要がある．\\
-\hspace{\parindent}
-粘土の粉末X線回折試験(X-Ray Diffraction)を行えば，回折ピークから粘土層間の距離\(h\)
-が求められる\cite{Morodome},\cite{Yamada}．特に，諸留，河村\cite{Morodome}は，
-相対湿度と温度を制御した環境下で，モンモリロナイトのその場X線回折試験を行い，
-温度一定条件での相対湿度と層間距離の関係
+式(\ref{eqn:mu_hyd})の左辺は\(N\)に関する式である一方，
+右辺は相対湿度\(r_H\)を通じて\(N\)に依存する形になっている．
+従って，$N$を変数として積分を行うには，\(r_H\)と\(N\)の関係が必要になる．
+粘土の粉末X線回折試験を行えば，回折ピークから粘土層間の距離\(h\)
+が求められる\cite{Morodome},\cite{Yamada}．諸留，河村\cite{Morodome}は，
+相対湿度と温度を制御した環境下で，モンモリロナイトのX線回折試験を行い，
+相対湿度$r_H$と層間距離$h$の関係:
 \begin{equation}
 	h=h(r_H), \ \ (0 \leq r_H \leq 1)
 	\label{eqn:hz_rh}
 \end{equation}
 を，相対湿度0$\% (r_H=0)$から100$\% (r_H=1)$の範囲で詳細に調べている．
-図\ref{fig:fig1}はその結果の一部である，Na型モンモリロナイトに対する
-温度50\(^\circ\)Cでの結果を文献\cite{Morodome}から復元したもので，
+図\ref{fig:fig1}は，その結果からNa型モンモリロナイトに対する
+温度50\(^\circ\)Cでの相対湿度と層間距離の関係を再現したもので，
 横軸は相対湿度，縦軸は層間距離を表している．
 これを式(\ref{eqn:hz_rh})として用いれば，環境の相対湿度と
-粘土含水系の層間距離を結びつけることができる．
+粘土の層間距離を結びつけることができる．
 %--------------------
 \begin{figure}[h]
 	\begin{center}
@@ -203,31 +200,32 @@ $\left<\Psi_{LJ}\right>$をある種の平衡状態について$N$に依存
 	} 
 	\label{fig:fig1}
 \end{figure}
-従って，層間距離\(h\)と水分子数\(N\)の関係が得られば，
-二つの関係式をあわせて\(r_H\)を\(N\)の関係を定める．
+これに加えて層間距離\(h\)と水分子数\(N\)の関係が得られば，
+二つの関係をあわせて\(r_H\)と\(N\)の関係が定められる．
 %式(\ref{eqn:mu_hyd})の両辺を\(N\)あるいは\(r_H\)に変数を統一して書くことができる．
 そこで，層間距離$h$と水和モル数\(n\)の関係:
 \begin{equation}
 	h=h(n)
 	\label{eqn:hz_nw}
 \end{equation}
-を全原子分子動力学(MD)計算で求める．図\ref{fig:fig1}-(b)は森本ら\cite{Morimoto}が
-行った全原子MD計算結果を，相対湿度0から1の間で観測される層間距離の範囲でプロット
-したものである．図\ref{fig:1}の結果を用いて，式(\ref{eqn:hz_nw})と式(\ref{eqn:hz_rh})
-を合成し，その逆関数
+を全原子分子動力学計算で求める．
+図\ref{fig:fig1}-(b)は，森本ら\cite{Morimoto}が行った全原子分子動力学計算の結果を
+$0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたものである．
+これら図\ref{fig:fig1}の結果を用い，式(\ref{eqn:hz_nw})と式(\ref{eqn:hz_rh})
+を合成してその逆関数
 \begin{equation}
 	r_H=r_H(h(n))
 	\label{eqn:rh_nw}
 \end{equation}
-を数値的に求めると図\ref{fig:fig6}の結果が得られる．
+を数値的に求めると，図\ref{fig:fig6}が得られる．
 %--------------------
 \begin{figure}[h]
 	\begin{center}
 	\includegraphics[width=0.6\linewidth]{Figs/fig6.pdf} 
 	\end{center}
 	\caption{
-		XRD測定結果\(h=h(r_H)\)と全原子MD計算結果の\(h=h(n)\)
-		から得られた相対湿度$r_H$と水和モル数$n$の関係.
+		XRD測定結果\(h=h(r_H)\)と全原子分子動力学計算結果の\(h=h(n)\)
+		から得られた，相対湿度$r_H$と水和モル数$n$の関係.
 	} 
 	\label{fig:fig6}
 \end{figure}
@@ -238,25 +236,25 @@ $\left<\Psi_{LJ}\right>$をある種の平衡状態について$N$に依存
 	N=nN_A, \ \ (N_A=6.023\times 10^{23}:アボガドロ数)
 	\label{eqn:}
 \end{equation}
-であることを考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した
-次の関係が得られる．
+を考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した次の関係が得られる．
 \begin{equation}
 	\frac{d G_{hyd}}{d n}
 	=
 	\mu_w^{sat}N_A +k_BN_AT \log \left\{ r_H(n) \right\}
 	\label{eqn:mu_hyd_n0}
 \end{equation}
-\(\mu_{sat}N_A\)は化学ポテンシャルを1molあたりの量として表したもので，
-\(k_B N_A\)は気体定数\(R\)である．そこで，以後，化学ポテンシャルを[J/mol]
-の単位で表するものとして\(N_A\)を省略すれば，式(\ref{eqn:mu_hyd_n0})を
+式(\ref{eqn:mu_hyd_n0})で，\(\mu_{sat}N_A\)は化学ポテンシャルを1molあたりの
+エネルギーとして表したもので，\(k_B N_A\)は気体定数\(R\)に等しい．
+そこで，これ以後，化学ポテンシャルの単位はJ/molであるとして式(\ref{eqn:mu_hyd_n0})から
+\(N_A\)を省略すれば，
 \begin{equation}
 	\frac{d G_{hyd}}{d n}
 	=
 	\mu_w^{sat} +RT \log \left\{ r_H(n) \right\}
 	\label{eqn:mu_hyd_n}
 \end{equation}
-とすることができる．式(\ref{eqn:mu_hyd_n})を，温度一定のもとで相対湿度$r_H=1$から
-積分すれば,自由エネルギーの変化
+とすることができる．ここで，式(\ref{eqn:mu_hyd_n})を，温度一定のもと相対湿度$r_H=1$から
+積分すれば，自由エネルギーの変化
 \begin{equation}
 	\Delta G_{hyd}(n) = G_{hyd}(n)-G_{hyd}(n_{sat})
 	\label{eqn:del_G}
@@ -287,33 +285,33 @@ $\left<\Psi_{LJ}\right>$をある種の平衡状態について$N$に依存
 	\mu_w^{sat} +RT \log \left\{ r_H(n) \right\}
 	\label{eqn:mu_system}
 \end{equation}
-となる．式(\ref{eqn:mu_system})で，$\mu_w^{sat}$は定数だから，
+となる．式(\ref{eqn:mu_system})において$\mu_w^{sat}$は定数だから，
 層間水量による化学ポテンシャルの変化は右辺の対数項で与えられ，
 この項が粘土の膨潤特性を表現している．また，これに対応する
-自由エネルギー変化は，式(\ref{eqn:del_G_mu})右辺の積分によって
-与えられる非線形項で，右辺第1項の\(n\)に関する線形項は
-層間イオンの特性とは関係しない．そこで，
+自由エネルギー変化は，式(\ref{eqn:del_G_mu})最右辺の積分項で，
+第1項の\(n\)に関する線形項は層間イオンに起因した膨潤特性とは
+関係しない．そこで，
 \begin{equation}
 	\delta \mu = \mu-\mu_{w}^{sat}
 	=
-	RT \log \left\{ r_H(n)\right\} dn
+	RT \log \left\{ r_H(n)\right\}
 \end{equation}
 \begin{equation}
 	\delta G_{hyd} =
 	RT
 	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn
 \end{equation}
-として，これらの\(n\)に対する変化を描くと，図\ref{fig:fig2}の
-結果が得られる．
+として，これらの\(n\)に対する変化を描くと，図\ref{fig:fig2}の結果が得られる．
+
 %--------------------
 \begin{figure}[h]
 	\begin{center}
 	\includegraphics[width=1.0\linewidth]{Figs/fig2.pdf} 
 	\end{center}
 	\caption{
-		Na型モンモリロナイトの膨潤データから作成した水和エネルギーモデル．
-		(a)化学ポテンシャル$\mu(n)$, (b)水和エネルギーの非線形成分$\delta G_{hyd}(n)$と
-		水和モル数$n$の関係.
+		Na型モンモリロナイトの膨潤データから作成した水和エネルギーモデルの特徴．
+		(a)化学ポテンシャルの対数項$\delta \mu(n)$, (b)$\delta \mu$に対応する
+		水和エネルギー成分$\delta G_{hyd}(n)$.
 	} 
 	\label{fig:fig2}
 \end{figure}
