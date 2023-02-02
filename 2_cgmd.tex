@@ -14,10 +14,10 @@
 	\label{eqn:mu_rH}
 \end{equation}
 ただし，$k_B(=1.380649\times 10^{-23}$[J/K])はボルツマン定数を，
-$P_w$と$P^{sat}_w$はそれぞれ水分浴の蒸気圧と飽和蒸気圧を表す．
+$P_w$と$P^{sat}_w$は，それぞれ，水分浴の蒸気圧と飽和蒸気圧を表す．
 また，$\phi(P)$は蒸気圧$P$におけるフガシティー係数を，
 $\mu_w^{sat}$は$P=P^{sat}_w$における水分浴の化学ポテンシャルを意味する．
-ここでは，簡単のためフガシティー係数を1にとり，式(\ref{eqn:mu_rH})を
+ここでは，簡単のためフガシティー係数を1とし，式(\ref{eqn:mu_rH})を
 \begin{equation}
 	\mu_w
 	=
@@ -35,8 +35,8 @@ $\mu$は水分浴の化学ポテンシャルに一致する．すなわち
 \end{equation}
 が成り立つ．
 \subsection{粘土含水系の自由エネルギー}
-粘土含水系の自由エネルギーを$G$とする．粘土含水系内の水分に関する化学ポテンシャルである$\mu$は，
-$G$を水分子数$N$で微分し，
+粘土含水系の自由エネルギーを$G$とする．粘土含水系内の水分に関する化学ポテンシャル
+$\mu$は，$G$を水分子数$N$で微分し，
 \begin{equation}
 	\mu=\frac{\partial G}{\partial N}
 	\label{eqn:mu_GN}
@@ -51,7 +51,7 @@ $G$を水分子数$N$で微分し，
 \end{equation}
 このように表現した自由エネルギー$G$に対し，平衡状態で式(\ref{eqn:equiv_mu})
 が満足されるように$G_{hyd}$を与える．
-そこで，式(\ref{eqn:mu_rH_simple})と式(\ref{eqn:Gtot})を式(\ref{eqn:equiv_mu})
+そこで，式(\ref{eqn:mu_rH_simple})と(\ref{eqn:Gtot})を式(\ref{eqn:equiv_mu})
 に代入すれば，
 \begin{equation}
 	\frac{\partial G}{\partial N}
@@ -68,11 +68,12 @@ $G$を水分子数$N$で微分し，
 \end{equation}
 が得られる．以下，$G_{hyd}$を水和エネルギーと呼ぶ．
 なお，CG-MD法における相互作用ポテンシャルは，非平衡状態でも定めることができる.
-一方，式(\ref{eqn:equiv_rH})は平衡状態で成り立つ式である．このことから，
-平衡状態における相互作用ポテンシャルであることを明示するために，
+一方，式(\ref{eqn:equiv_rH})は平衡状態で成り立つ式である．この点の区別を
+つけるために，
+平衡状態における相互作用ポテンシャルを
 $\Psi_{LJ}$でなく$\left< \Psi_{LJ}\right>$と表記している. \\
 \hspace{\parindent}
-CG-MD系の相互作用ポテンシャルは，Lenard-Jones対ポテンシャル:
+CG-MD系の相互作用ポテンシャルは，Lenard-Jonesポテンシャル:
 \begin{equation}
 	U(\fat{x}_i,\fat{x}_j; \sigma) 
 	= 4 \varepsilon 
@@ -83,21 +84,21 @@ CG-MD系の相互作用ポテンシャルは，Lenard-Jones対ポテンシャル
 	\right\}, \ \ \left( r_{ij}=\left| \fat{x}_i-\fat{x}_j\right| \right)
 	\label{eqn:LJ}
 \end{equation}
-により，
+を用いて，
 \begin{equation}
 	\Psi_{LJ}=\sum_{i<j} U(\fat{x}_i,\fat{x}_j; \sigma) 
 	\label{eqn:def_PsiLJ}
 \end{equation}
 で与えられる．ただし，$\fat{x}_i$と$\fat{x}_j$は，それぞれ，第$i$および第$j$番目
-の粗視化粒子の位置を表し，
+の粗視化粒子位置を表し，
 $\varepsilon$は
 \begin{equation}
 	\varepsilon=1.0\times 10^{-19}, \ \ [{\rm Nm}]
 	\label{eqn:eps_of_LJ}
 \end{equation}
-である．また，ポテンシャル$U$の基準距離$\sigma$は，層間距離を制御する変数であるとともに，
+である．ポテンシャル$U$の基準距離$\sigma$は，層間距離を制御する変数であるとともに，
 粗視化粒子に水和した水分量としての意味をもつ．平衡状態における相互作用ポテンシャルは，
-式(\ref{eqn:def_PsiLJ})の時間$t$における瞬間値を$\Psi_{LJ}(t)$として，その平均
+式(\ref{eqn:def_PsiLJ})の時間$t$における瞬間値$\Psi_{LJ}(t)$の平均:
 \begin{equation}
 	\left< \Psi_{LJ}\right>
 	=
@@ -135,7 +136,7 @@ $\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量だから，
 \end{eqnarray}
 ここで，力学的な量である$\left<\Psi_{LJ}\right>$は系の体積$V$と圧力$P$の関係を，
 層間水に関する量である$G_{hyd}$は水分量$N$と化学ポテンシャル$\mu$の関係を，
-それぞれ定めるエネルギー成分となるように$G$を分割することを要請する．
+それぞれ，定めるエネルギー成分となるよう$G$が分割されていることを要請する．
 すなわち，式(\ref{eqn:Gtot_PN})は
 \begin{eqnarray}
 	\left( \frac{\partial \left< \Psi_{LJ}\right>}{\partial N} \right)_P=0, 
@@ -169,7 +170,7 @@ $\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量だから，
 \end{equation}
 \subsection{相対湿度と水分子数の関係}
 式(\ref{eqn:mu_hyd})の両辺を水分子数\(N\)で積分することができれば，
-水和エネルギー\(G_{hyd}\)を決めることができる．しかしながら，
+水和エネルギー\(G_{hyd}\)が定められる．しかしながら，
 式(\ref{eqn:mu_hyd})の左辺は\(N\)に関する式である一方，
 右辺は相対湿度\(r_H\)を通じて\(N\)に依存する形になっている．
 従って，$N$を変数として積分を行うには，\(r_H\)と\(N\)の関係が必要になる．
@@ -182,9 +183,9 @@ $\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量だから，
 	\label{eqn:hz_rh}
 \end{equation}
 を，相対湿度0$\% (r_H=0)$から100$\% (r_H=1)$の範囲で詳細に調べている．
-図\ref{fig:fig1}は，その結果からNa型モンモリロナイトに対する
-温度50\(^\circ\)Cでの相対湿度と層間距離の関係を再現したもので，
-横軸は相対湿度，縦軸は層間距離を表している．
+図\ref{fig:fig1}-(a)は，文献\cite{Morodome}に示された結果のうち，
+Na型モンモリロナイトに対する温度50\(^\circ\)Cでの相対湿度と層間距離の
+関係を再現したものである．
 これを式(\ref{eqn:hz_rh})として用いれば，環境の相対湿度と
 粘土の層間距離を結びつけることができる．
 %--------------------
@@ -209,7 +210,7 @@ $\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量だから，
 	\label{eqn:hz_nw}
 \end{equation}
 を全原子分子動力学計算で求める．
-図\ref{fig:fig1}-(b)は，森本ら\cite{Morimoto}が行った全原子分子動力学計算の結果を
+図\ref{fig:fig1}-(b)は，森本ら\cite{Morimoto}が行った全原子分子動力学計算の結果を，
 $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたものである．
 これら図\ref{fig:fig1}の結果を用い，式(\ref{eqn:hz_nw})と式(\ref{eqn:hz_rh})
 を合成してその逆関数
@@ -230,31 +231,31 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 	\label{fig:fig6}
 \end{figure}
 %--------------------
-\subsection{水和エネルギーと水和モル数の関係}
+\subsection{水和エネルギー}
 式(\ref{eqn:rh_nw})を式(\ref{eqn:mu_hyd})に代入し，
 \begin{equation}
 	N=nN_A, \ \ (N_A=6.023\times 10^{23}:アボガドロ数)
 	\label{eqn:}
 \end{equation}
-を考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した次の関係が得られる．
+であることを考慮すれば，式(\ref{eqn:mu_hyd})の変数を\(n\)に統一した次の関係が得られる．
 \begin{equation}
 	\frac{d G_{hyd}}{d n}
 	=
 	\mu_w^{sat}N_A +k_BN_AT \log \left\{ r_H(n) \right\}
 	\label{eqn:mu_hyd_n0}
 \end{equation}
-式(\ref{eqn:mu_hyd_n0})で，\(\mu_{sat}N_A\)は化学ポテンシャルを1molあたりの
+式(\ref{eqn:mu_hyd_n0})で，\(\mu_w^{sat}N_A\)は化学ポテンシャルを1molあたりの
 エネルギーとして表したもので，\(k_B N_A\)は気体定数\(R\)に等しい．
-そこで，これ以後，化学ポテンシャルの単位はJ/molであるとして式(\ref{eqn:mu_hyd_n0})から
-\(N_A\)を省略すれば，
+そこで，これ以後，化学ポテンシャルの単位はJ/molであるとして，
+式(\ref{eqn:mu_hyd_n0})から\(N_A\)を省略すれば，
 \begin{equation}
 	\frac{d G_{hyd}}{d n}
 	=
 	\mu_w^{sat} +RT \log \left\{ r_H(n) \right\}
 	\label{eqn:mu_hyd_n}
 \end{equation}
-とすることができる．ここで，式(\ref{eqn:mu_hyd_n})を，温度一定のもと相対湿度$r_H=1$から
-積分すれば，自由エネルギーの変化
+と書くことができる．ここで，式(\ref{eqn:mu_hyd_n})を温度一定のもと相対湿度$r_H=1$から
+積分すれば，自由エネルギー変化:
 \begin{equation}
 	\Delta G_{hyd}(n) = G_{hyd}(n)-G_{hyd}(n_{sat})
 	\label{eqn:del_G}
@@ -287,9 +288,9 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 \end{equation}
 となる．式(\ref{eqn:mu_system})において$\mu_w^{sat}$は定数だから，
 層間水量による化学ポテンシャルの変化は右辺の対数項で与えられ，
-この項が粘土の膨潤特性を表現している．また，これに対応する
+この項が層間イオン種に固有の膨潤特性を表現する．また，対応する
 自由エネルギー変化は，式(\ref{eqn:del_G_mu})最右辺の積分項で，
-第1項の\(n\)に関する線形項は層間イオンに起因した膨潤特性とは
+最右辺第1項の\(n\)に関する線形項は，層間イオン種毎の特徴とは
 関係しない．そこで，
 \begin{equation}
 	\delta \mu = \mu-\mu_{w}^{sat}
