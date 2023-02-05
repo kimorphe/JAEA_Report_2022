@@ -109,7 +109,7 @@ $\varepsilon$は
 対象とする系は時刻$t_0$に依存しない平均値を与える状態にあることを
 前提としている．\\
 \hspace{\parindent}
-$\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量だから，
+$\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量であることから，
 温度$T$，圧力$P$, 水分子数$N$を独立変数として表すことができる．
 ここでは，温度$T$は一定として引数から省略し，$P$と$N$を用いて
 \begin{equation}
@@ -168,13 +168,13 @@ $\left< \Psi_{LJ} \right>$や$G_{hyd}$は熱力学的なマクロ量だから，
 	\mu_w^{sat} +k_BT \log \left( r_H \right)
 	\label{eqn:mu_hyd}
 \end{equation}
-\subsection{相対湿度と水分子数の関係}
+\subsection{粉末X線回折試験で得られる相対湿度と水分子数の関係}
 式(\ref{eqn:mu_hyd})の両辺を水分子数\(N\)で積分することができれば，
 水和エネルギー\(G_{hyd}\)が定められる．しかしながら，
 式(\ref{eqn:mu_hyd})の左辺は\(N\)に関する式である一方，
 右辺は相対湿度\(r_H\)を通じて\(N\)に依存する形になっている．
 従って，$N$を変数として積分を行うには，\(r_H\)と\(N\)の関係が必要になる．
-粘土の粉末X線回折試験を行えば，回折ピークから粘土層間の距離\(h\)
+含水した粉末状の粘土に対しては， X線回折試験で得られた回折ピークから粘土層間の距離\(h\)
 が求められる\cite{Morodome},\cite{Yamada}．諸留，河村\cite{Morodome}は，
 相対湿度と温度を制御した環境下で，モンモリロナイトのX線回折試験を行い，
 相対湿度$r_H$と層間距離$h$の関係:
@@ -215,7 +215,7 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 これら図\ref{fig:fig1}の結果を用い，式(\ref{eqn:hz_nw})と式(\ref{eqn:hz_rh})
 を合成してその逆関数
 \begin{equation}
-	r_H=r_H(h(n))
+	r_H=r_H(n)=r_H(h(n))
 	\label{eqn:rh_nw}
 \end{equation}
 を数値的に求めると，図\ref{fig:fig6}が得られる．
@@ -231,6 +231,9 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 	\label{fig:fig6}
 \end{figure}
 %--------------------
+式(\ref{eqn:mu_hyd})は任意の平衡状態で成り立つため，粉末X線回折試験
+から得られた式(\ref{eqn:rh_nw})を用いれば，次項で示すように，水和エネルギー
+を求めることができる．
 \subsection{水和エネルギー}
 式(\ref{eqn:rh_nw})を式(\ref{eqn:mu_hyd})に代入し，
 \begin{equation}
@@ -311,7 +314,7 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 	\end{center}
 	\caption{
 		Na型モンモリロナイトの膨潤データから作成した水和エネルギーモデルの特徴．
-		(a)化学ポテンシャルの対数項$\delta \mu(n)$, (b)$\delta \mu$に対応する
+		(a)化学ポテンシャルの対数項$\delta \mu(n)$, (b)$\delta \mu(n)$に対応する
 		水和エネルギー成分$\delta G_{hyd}(n)$.
 	} 
 	\label{fig:fig2}
