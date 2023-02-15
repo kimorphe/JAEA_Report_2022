@@ -215,7 +215,7 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 これら図\ref{fig:fig1}の結果を用い，式(\ref{eqn:hz_nw})と式(\ref{eqn:hz_rh})
 を合成してその逆関数
 \begin{equation}
-	r_H=r_H(n)=r_H(h(n))
+	r_H=r_H(n):=r_H(h(n))
 	\label{eqn:rh_nw}
 \end{equation}
 を数値的に求めると，図\ref{fig:fig6}が得られる．
@@ -244,7 +244,7 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 \begin{equation}
 	\frac{d G_{hyd}}{d n}
 	=
-	\mu_w^{sat}N_A +k_BN_AT \log \left\{ r_H(n) \right\}
+	\mu_w^{sat}N_A +k_BN_AT \log \left\{ r_H(h(n)) \right\}
 	\label{eqn:mu_hyd_n0}
 \end{equation}
 式(\ref{eqn:mu_hyd_n0})で，\(\mu_w^{sat}N_A\)は化学ポテンシャルを1molあたりの
@@ -254,7 +254,7 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 \begin{equation}
 	\frac{d G_{hyd}}{d n}
 	=
-	\mu_w^{sat} +RT \log \left\{ r_H(n) \right\}
+	\mu_w^{sat} +RT \log \left\{ r_H(h(n)) \right\}
 	\label{eqn:mu_hyd_n}
 \end{equation}
 と書くことができる．ここで，式(\ref{eqn:mu_hyd_n})を温度一定のもと相対湿度$r_H=1$から
@@ -270,7 +270,7 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 	\mu_{sat}\Delta n
 	+
 	RT
-	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn, \ \ (0 \leq n \leq n_{sat})
+	\int_{n_{sat}}^{n} \log \left\{ r_H(h(n))\right\} dn, \ \ (0 \leq n \leq n_{sat})
 	\label{eqn:del_G_mu}
 \end{equation}
 で計算できる. ただし，\(n_{sat}\)は相対湿度\(r_H=1\)のときに粉末状の粘土がもつ
@@ -286,7 +286,7 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 	=
 	\frac{d G_{hyd}}{d n}
 	=
-	\mu_w^{sat} +RT \log \left\{ r_H(n) \right\}
+	\mu_w^{sat} +RT \log \left\{ r_H(h(n)) \right\}
 	\label{eqn:mu_system}
 \end{equation}
 となる．式(\ref{eqn:mu_system})において$\mu_w^{sat}$は定数だから，
@@ -298,12 +298,12 @@ $0\leq r_H \leq 1$で観測される層間距離範囲でプロットしたも�
 \begin{equation}
 	\delta \mu = \mu-\mu_{w}^{sat}
 	=
-	RT \log \left\{ r_H(n)\right\}
+	RT \log \left\{ r_H(h(n))\right\}
 \end{equation}
 \begin{equation}
 	\delta G_{hyd} =
 	RT
-	\int_{n_{sat}}^{n} \log \left\{ r_H(n)\right\} dn
+	\int_{n_{sat}}^{n} \log \left\{ r_H(h(n))\right\} dn
 \end{equation}
 として，これらの\(n\)に対する変化を描くと，図\ref{fig:fig2}の結果が得られる．
 
